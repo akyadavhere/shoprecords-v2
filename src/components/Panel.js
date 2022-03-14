@@ -14,7 +14,7 @@ export default function Panel(props) {
 
    return (
       <div className='row min-vh-100 me-0'>
-         <div style={{'maxWidth':'300px'}}></div>
+         <div className='col px-0 min-vh-100' style={{'maxWidth':'300px'}}></div>
          <div className='col bg-white shadow px-0 min-vh-100 position-fixed' style={{'maxWidth':'300px'}}>
             <div className='d-flex flex-column align-items-center justify-content-center' style={{'height':'75px'}}>
                <h3 className='mb-0 mt-4'>Shop records</h3>

@@ -36,7 +36,7 @@ export default function Dashboard() {
          ))}
       </div>
 
-      <div className='d-flex flex-row mt-5'>
+      <div className='d-flex flex-row mt-5 align-items-start'>
          <div className='shadow bg-white p-4 rounded-3' style={{'width':'65.75%'}}>
             <h6 className='text-center mb-4'>Purchases</h6>
             <Graph {...graphProps}/>
