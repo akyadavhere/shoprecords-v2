@@ -75,7 +75,7 @@ export default function Graph(props) {
 			{
 				label: props.label,
 				data: props.data,
-				borderColor: '#6300EE',
+				borderColor: "#6300EE",
 				backgroundColor: color,
 				tension: 0.3,
 				borderWidth: 1.5,

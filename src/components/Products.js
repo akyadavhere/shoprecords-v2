@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import Table from './Table'
+import React, { useEffect, useState } from "react"
+import Table from "./Table"
 
 export default function Products() {
    const [rows, setRows] = useState([])
@@ -18,43 +18,43 @@ export default function Products() {
 
    const products = [
       {
-         id: '1',
-         name: 'Item-1',
-         price: '10'
+         id: "1",
+         name: "Item-1",
+         price: "10"
       },
       {
-         id: '2',
-         name: 'Item-2',
-         price: '20'
+         id: "2",
+         name: "Item-2",
+         price: "20"
       },
       {
-         id: '3',
-         name: 'Item-3',
-         price: '30'
+         id: "3",
+         name: "Item-3",
+         price: "30"
       },
       {
-         id: '4',
-         name: 'Item-4',
-         price: '40'
+         id: "4",
+         name: "Item-4",
+         price: "40"
       }
    ]
 
    var baseRows = [
       {
-         id: '1',
-         data: ['Item-1','120']
+         id: "1",
+         data: ["Item-1","120"]
       },
       {
-         id: '2',
-         data: ['Item-2','120']
+         id: "2",
+         data: ["Item-2","120"]
       },
       {
-         id: '3',
-         data: ['Item-3','120']
+         id: "3",
+         data: ["Item-3","120"]
       },
       {
-         id: '4',
-         data: ['Item-4','120']
+         id: "4",
+         data: ["Item-4","120"]
       },
    ]
 
@@ -63,30 +63,30 @@ export default function Products() {
 	},[])
 
    const tableData = {
-      class: 'primary',
+      class: "primary",
       buttons: [
          {
-            head: 'Remove',
-            name: 'Delete',
-            class: 'btn btn-sm btn-link text-danger text-decoration-none',
+            head: "Remove",
+            name: "Delete",
+            class: "btn btn-sm btn-link text-danger text-decoration-none",
             callbackFunc: handleDelete,
          }
       ],
-      head: ['Product','Price'],
+      head: ["Product","Price"],
       rows: rows
    }
 
    return (
       <>
-         <div className='shadow bg-white rounded-3 mb-5'>
-            <form  className='input-group p-4' onSubmit={handleSubmit}>
-               <input className='form-control' required type='text' placeholder='Product' style={{'width':'40%'}}/>
-               <input className='form-control' required type='number' min='0' step={100} placeholder='Price'/>
-               <input className='form-control btn-primary text-white' type='submit' value='Add'/>
+         <div className="shadow bg-white rounded-3 mb-5">
+            <form  className="input-group p-4" onSubmit={handleSubmit}>
+               <input className="form-control" required type="text" placeholder="Product" style={{"width":"40%"}}/>
+               <input className="form-control" required type="number" min="0" step={100} placeholder="Price"/>
+               <input className="form-control btn-primary text-white" type="submit" value="Add"/>
             </form>
          </div>
 
-         <div className='shadow bg-white rounded-3 mb-5'>
+         <div className="shadow bg-white rounded-3 mb-5">
             <Table data={tableData}/>
          </div>
       </>

@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
 export default function Table(props) {
    return (
-      <div className='p-4'>
-         <table className='table table-borderless align-middle text-center m-0 p-0'>
-            <thead className={'table-'+props.data.class}>
+      <div className="p-4">
+         <table className="table table-borderless align-middle text-center m-0 p-0">
+            <thead className={"table-"+props.data.class}>
                <tr>
                   <td>S No.</td>
                   {props.data.head.map((item,index) => (
@@ -17,7 +17,7 @@ export default function Table(props) {
             </thead>
             <tbody>
                {props.data.rows.map((row,index) => (
-                  <tr key={row.id} className={'hover-'+props.data.class}>
+                  <tr key={row.id} className={"hover-"+props.data.class}>
                      <td>{index+1}</td>
                      {row.data.map((item,index) => (
                         <td key={index}>{item}</td>

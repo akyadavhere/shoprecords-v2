@@ -7,11 +7,11 @@ $info: #6300EE;
 $warning: #FFBE3B;
 
 // import bootstrap 
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // additional css
 *{
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    color: #382B47;
 }
 body{
