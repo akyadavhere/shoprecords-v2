@@ -1,0 +1,38 @@
+// change variables
+$primary: #FF0071;
+$primary: #6300EE;
+$secondary: #00C29B;
+$danger: #F2193F;
+$info: #6300EE;
+$warning: #FFBE3B;
+
+// import bootstrap 
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// additional css
+*{
+   font-family: 'Poppins', sans-serif;
+   color: #382B47;
+}
+body{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+#root{
+   background-color: #FDF7FF;
+   max-width: 1440px;
+   flex-grow: 1;
+}
+.btn:focus,.btn-primary:focus{
+   box-shadow: none !important;
+}
+.hover-primary:hover{
+   background-color: #F4ECF7  !important;
+}
+.hover-secondary:hover{
+   background-color: #E8F6F3 !important;
+}
+.form-control[readonly]{
+   background-color: #FFFFFF;
+}
