@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Table from "./Table"
+import Table from "../components/Table"
 
 export default function Products() {
    const [rows, setRows] = useState([])

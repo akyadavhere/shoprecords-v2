@@ -12,7 +12,7 @@ export default function Customer() {
    ]
 
   return (
-      <Panel menuArray={menuArray} switchURL="/seller">
+      <Panel menuArray={menuArray} url="/seller">
          <Outlet/>
       </Panel>
    )
