@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import CollapsibleTable from "../components/CollapsibleTable"
+import CollapsibleTable from "../components/CollTable"
 import Table from "../components/Table"
 import handleStatusChange from "../utils/handleStatusChange"
 

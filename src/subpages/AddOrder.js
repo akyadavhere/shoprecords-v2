@@ -104,7 +104,7 @@ export default function AddOrder() {
 
    return (
       <>
-         <div className="shadow bg-white rounded-3 mb-5">
+         <div className="shadow rounded-3 mb-5">
             <form ref={formOne} className="input-group p-4" onChange={handleFormOneChange} onSubmit={handleFormOneSubmit}>
                <select className="form-select" defaultValue="" required name="item">
                   <option value="" hidden>Select Item</option>
@@ -119,11 +119,11 @@ export default function AddOrder() {
             </form>
          </div> 
 
-         <div className="shadow bg-white rounded-3 mb-5">
+         <div className="shadow rounded-3 mb-5">
             <Table data={tableData}/>
          </div>
 
-         <div className="shadow bg-white rounded-3">
+         <div className="shadow rounded-3">
             <form className="input-group p-4" onReset={handleFormTwoReset} onSubmit={handleFormTwoSubmit}>
                <input className="form-control" required readOnly type="text" placeholder="Grand Total" value={total?`Rs. ${total}`:""} style={{"width":"12%"}}/>
                <input className="form-control" required type="email" placeholder="Customer's Email" style={{"width":"48%"}}/>

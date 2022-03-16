@@ -37,12 +37,12 @@ export default function Dashboard() {
       </div>
 
       <div className="d-flex flex-row mt-5 align-items-start">
-         <div className="shadow bg-white p-4 rounded-3" style={{"width":"65.75%"}}>
+         <div className="shadow p-4 rounded-3" style={{"width":"65.75%"}}>
             <h6 className="text-center mb-4">Purchases</h6>
             <Graph {...graphProps}/>
          </div>
 
-         <div className="ms-5 flex-grow-1 bg-white shadow rounded-3">
+         <div className="ms-5 flex-grow-1 shadow rounded-3">
             <h6 className="text-center mb-0 mt-4">Pendings</h6>
             <ul className="list-group list-group-flush p-4 text-center">
                {data.map(([name,value],index) => (

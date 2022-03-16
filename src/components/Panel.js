@@ -9,7 +9,7 @@ export default function Panel(props) {
 
          <Sidebar menuArray={props.menuArray} url={props.url}/>
         
-         <div className="col border border-primary border-start-0 border-end-0 border-bottom-0 px-0">
+         <div className="col border-thick px-0">
             <div className="mx-5 my-5">
                {props.children}
             </div>

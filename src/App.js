@@ -19,7 +19,7 @@ import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
 
-	const requiredWidth = "(min-width: 980px)"
+	const requiredWidth = "(min-width: 920px)"
 	const [isRequiredWidth, setIsRequiredWidth] = useState(window.matchMedia(requiredWidth).matches)
 	window.addEventListener("resize",() => setIsRequiredWidth(window.matchMedia(requiredWidth).matches))
 
@@ -27,39 +27,39 @@ export default function App() {
 		isRequiredWidth?
 	 	<Router>
 			<Routes>
-					<Route exact path="/" element={<Navigate replace to="login"/>}/>
-					<Route path="/">
+				<Route exact path="/" element={<Navigate replace to="login"/>}/>
+				<Route       path="/">
 
-						<Route path="login" element={<Login/>}/>
-						<Route path="signup" element={<Signup/>}/>
+					<Route path="login"  element={<Login/>}/>
+					<Route path="signup" element={<Signup/>}/>
 
-						<Route exact path="customer" element={<Navigate replace to="dashboard"/>}/>
-						<Route path="customer" element={<Customer/>}>
+					<Route exact path="customer" element={<Navigate replace to="dashboard"/>}/>
+					<Route       path="customer" element={<Customer/>}>
 
-							<Route path="dashboard" element={<Dashboard/>}/>
-							<Route path="orders" element={<Orders/>}/>
-							<Route path="payments" element={<Payments/>}/>
-							<Route path="sellers" element={<ListRelated/>}/>
-
-						</Route>
-
-						<Route exact path="seller" element={<Navigate replace to="dashboard"/>}/>
-						<Route path="seller" element={<Seller/>}>
-							
-							<Route path="dashboard" element={<Dashboard/>}/>
-							<Route path="addorder" element={<AddOrder/>}/>
-							<Route path="orders" element={<Orders/>}/>
-							<Route path="payments" element={<Payments/>}/>
-							<Route path="customers" element={<ListRelated/>}/>
-							<Route path="products" element={<Products/>}/>
-
-						</Route>
-
-						<Route path="*" element={<ErrorMessage message="404 Page not found"/>}/>
+						<Route path="dashboard" element={<Dashboard/>}/>
+						<Route path="orders"    element={<Orders/>}/>
+						<Route path="payments"  element={<Payments/>}/>
+						<Route path="sellers"   element={<ListRelated/>}/>
 
 					</Route>
+
+					<Route exact path="seller" element={<Navigate replace to="dashboard"/>}/>
+					<Route       path="seller" element={<Seller/>}>
+						
+						<Route path="dashboard" element={<Dashboard/>}/>
+						<Route path="addorder"  element={<AddOrder/>}/>
+						<Route path="orders"    element={<Orders/>}/>
+						<Route path="payments"  element={<Payments/>}/>
+						<Route path="customers" element={<ListRelated/>}/>
+						<Route path="products"  element={<Products/>}/>
+
+					</Route>
+
+					<Route path="*" element={<ErrorMessage message="404 Page not found"/>}/>
+
+				</Route>
 			</Routes>
-			
-		</Router>:<ErrorMessage message="Your screen size is not supported	"/>
+		</Router>
+		: <ErrorMessage message="Your screen size is not supported"/>
   	)
 }

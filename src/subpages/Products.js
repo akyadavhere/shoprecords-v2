@@ -78,7 +78,7 @@ export default function Products() {
 
    return (
       <>
-         <div className="shadow bg-white rounded-3 mb-5">
+         <div className="shadow rounded-3 mb-5">
             <form  className="input-group p-4" onSubmit={handleSubmit}>
                <input className="form-control" required type="text" placeholder="Product" style={{"width":"40%"}}/>
                <input className="form-control" required type="number" min="0" step={100} placeholder="Price"/>
@@ -86,7 +86,7 @@ export default function Products() {
             </form>
          </div>
 
-         <div className="shadow bg-white rounded-3 mb-5">
+         <div className="shadow rounded-3 mb-5">
             <Table data={tableData}/>
          </div>
       </>

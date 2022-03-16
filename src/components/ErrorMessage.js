@@ -2,7 +2,7 @@ import React from "react"
 
 export default function ErrorMessage(props) {
    return (
-      <div className="bg-white d-flex flex-row justify-content-center pt-3">
+      <div className="d-flex flex-row justify-content-center pt-3">
         <p> {props.message} </p>
     </div>
    )

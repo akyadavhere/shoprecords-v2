@@ -13,7 +13,7 @@ export default function Signup() {
 
    return (
       <div className="d-flex flex-row align-items-center justify-content-center min-vh-100">
-         <div className="d-flex flex-column align-items-center shadow bg-white p-5 rounded-3">
+         <div className="d-flex flex-column align-items-center shadow p-5 rounded-3">
             <h1 className="mb-4 poppins fw-bold">Sign up</h1>
             <form ref={form} className="d-flex flex-column" onSubmit={handleSubmit} style={{"width":"220px"}}>
                <input className="form-control mb-4" required type="text" placeholder="Name"/>

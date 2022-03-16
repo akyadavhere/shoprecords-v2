@@ -1,9 +1,9 @@
 import React, { Fragment } from "react"
 
-export default function CollapsibleTable(props) {
+export default function CollTable(props) {
 
  	return (
-		<div className="shadow bg-white rounded-3">
+		<div className="shadow rounded-3">
 			<div className="p-4">
 
 				<table className="table table-borderless align-middle text-center m-0 p-0">
