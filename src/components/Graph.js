@@ -21,8 +21,8 @@ export default function Graph(props) {
 		var ctx = document.getElementById("graphCanvas").getContext("2d")
 
 		var fillColor = ctx.createLinearGradient(0,0,0,500)
-		fillColor.addColorStop(0, "rgba(98, 0, 238, 0.4)")  
-		fillColor.addColorStop(1, "rgba(253, 247, 255, 0.2)")
+		fillColor.addColorStop(0, "rgba(98, 0, 238, 0.3)")  
+		fillColor.addColorStop(1, "rgba(253, 247, 255, 0.15)")
 
 		setColor(fillColor)
 	},[])
@@ -76,7 +76,7 @@ export default function Graph(props) {
 				data: props.data,
 				borderColor: "#6300EE",
 				backgroundColor: color,
-				tension: 0.3,
+				tension: 0.25,
 				borderWidth: 1.5,
 				pointRadius: 2,
 				fill: true,
