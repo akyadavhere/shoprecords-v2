@@ -31,7 +31,7 @@ export default function Sidebar(props) {
       <div className="col position-fixed min-vh-100 right-shadow px-0" style={{"maxWidth":"300px"}}>
 
          <div className="d-flex flex-column align-items-center justify-content-center" style={{"height":"75px"}}>
-            <h3 className="mb-0 mt-4"> Shop records </h3>
+            <h3 className="mb-0 mt-4" type="button" onClick={() => navigate("/")}> Shop records </h3>
          </div>
 
          <ul className="list-group list-group-flush mt-4">

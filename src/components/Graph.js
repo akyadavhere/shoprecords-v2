@@ -76,7 +76,7 @@ export default function Graph(props) {
 				data: props.data,
 				borderColor: "#6300EE",
 				backgroundColor: color,
-				tension: 0.25,
+				tension: 0.3,
 				borderWidth: 1.5,
 				pointRadius: 2,
 				fill: true,

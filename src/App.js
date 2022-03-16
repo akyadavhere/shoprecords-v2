@@ -22,7 +22,7 @@ import AddOrder           from "./components/seller/AddOrder"
 import Products           from "./components/seller/Products"
 import SellerPayments     from "./components/seller/SellerPayments"
 
-
+import Home from "./pages/Home"
 import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
@@ -36,9 +36,10 @@ export default function App() {
 		isRequiredWidth?
 	 	<Router>
 			<Routes>
-				<Route exact path="/" element={<Navigate replace to="login"/>}/>
+				<Route exact path="/" element={<Navigate replace to="home"/>}/>
 				<Route       path="/">
 
+					<Route path="home"  element={<Home/>}/>
 					<Route path="login"  element={<Login/>}/>
 					<Route path="signup" element={<Signup/>}/>
 

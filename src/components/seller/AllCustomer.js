@@ -29,7 +29,7 @@ export default function AllCustomer() {
    },[])
 
    const tableProps = {
-      head: ["Customer", "Email", "Total", "Paid", "Due", "Remove"],
+      head: ["Customer", "Email", "Total (Rs)", "Paid (Rs)", "Due (Rs)", "Remove"],
       body: rows,
       callbacks: [handleDeleteCustomer],
       config: {

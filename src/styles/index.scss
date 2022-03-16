@@ -1,5 +1,5 @@
 // change variables
-$primary:   #6300EE;
+$primary:   #791AFF;
 $secondary: #00C29B;
 $danger:    #F2193F;
 $warning:   #FFBE3B;
@@ -37,7 +37,7 @@ body{
 }
 
 .border-thick{
-  border-top: 2px solid #6300EE !important;
+  border-top: 2px solid #791AFF !important;
 }
 
 .right-shadow {
@@ -50,4 +50,8 @@ body{
 
 .bg-table-secondary{
    background-color: #ABEBC6;
+}
+
+.text-hover:hover{
+   color: #791AFF;
 }

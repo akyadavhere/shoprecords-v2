@@ -21,29 +21,29 @@ export default function SellerDashboard() {
       graphProps: {
          title: "Purchases",
          label: "Amount",
-         labels: ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct"],
-         data: [8,4,6,5,7,8,5,3,6,7],
+         labels: ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"],
+         data: [5,6,4,7,3,8,2,9,4,8,5,8],
       },
       pendings: [
          [
-            "Rohan Yadav",
-            "120"
+            "Diana",
+            "780"
          ],
          [
-            "Rohan Yadav",
-            "120"
+            "Emma",
+            "440"
          ],
          [
-            "Rohan Yadav",
-            "120"
+            "Jennifer",
+            "950"
          ],
          [
-            "Rohan Yadav",
-            "120"
+            "Katherine",
+            "1220"
          ],
          [
-            "Rohan Yadav",
-            "120"
+            "Lauren",
+            "1280"
          ],
       ]
    }

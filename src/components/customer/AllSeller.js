@@ -4,7 +4,7 @@ import Table            from "../Table"
 export default function AllSeller() {
 
    const tableProps = {
-      head: ["Seller", "Email", "Total", "Paid", "Due"],
+      head: ["Seller", "Email", "Total (Rs)", "Paid (Rs)", "Due (Rs)"],
       body: [
          {
             id: "1",
