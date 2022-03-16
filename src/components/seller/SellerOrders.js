@@ -30,6 +30,10 @@ export default function SellerOrders() {
 				child: <Table {...tableProps}/>,
 				buttons: [
 					{
+						text: "Accepted",
+						class: ["btn btn-sm btn-link text-decoration-none text-secondary"]
+					},
+					{
 						text: "Delete",
 						class: ["btn btn-sm btn-link text-decoration-none text-danger"],
 					},
@@ -41,9 +45,9 @@ export default function SellerOrders() {
 
 	const collTableProps = {
 		name: "CustomerOrder",
-		head: ["Customer", "Date", "Time", "Total Price", "Remove"],
+		head: ["Customer", "Date", "Time", "Total Price", "Status", "Remove"],
 		body: rows,
-		callbacks: [e => setRows(rows.filter(row => row.id !== e.target.id))],
+		callbacks: [() => {}, e => setRows(rows.filter(row => row.id !== e.target.id))],
 		config: {
          color: "primary"
 		}

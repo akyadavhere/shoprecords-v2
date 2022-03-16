@@ -131,7 +131,8 @@ export default function AddOrder() {
       body: rows,
       callbacks: [handleItemDelete],
       config:{
-         color: "primary"
+         color: "primary",
+         shadow: true,
       }
    }
 

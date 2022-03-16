@@ -3,12 +3,12 @@ import React from "react"
 export default function Table(props) {
 
    return (
-      <div className="shadow rounded-3 mb-5">
+      <div className={props.config.shadow ? "shadow rounded-3 mb-5" : ""}>
          <div className="p-4">
 
             <table className="table table-borderless align-middle text-center m-0 p-0">
 
-               <thead className={"table-"+props.config.color}>
+               <thead className={"bg-table-"+props.config.color}>
                   <tr>
                      <td>S No.</td>
                      {
@@ -22,7 +22,7 @@ export default function Table(props) {
                <tbody>
                   {
                      props.body.map((row, index) => (
-                        <tr key={row.id} className={"hover-"+props.config.color}>
+                        <tr key={row.id} className="hover">
                            <td> {index + 1} </td>
                            {
                               row.data.map((rowData, index) => (

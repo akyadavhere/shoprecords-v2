@@ -4,26 +4,31 @@ import {
 	Routes,
 	Route,
 	Navigate,
-}                   from "react-router-dom"
-import Login        from "./pages/Login"
-import Signup       from "./pages/Signup"
-import Customer     from "./pages/Customer"
-import Seller       from "./pages/Seller"
+}                         from "react-router-dom"
+import Login              from "./pages/Login"
+import Signup             from "./pages/Signup"
+import Customer           from "./pages/Customer"
+import Seller             from "./pages/Seller"
 
-import CustomerDashboard    from "./components/customer/CustomerDashboard"
-import CustomerOrders    from "./components/customer/CustomerOrders"
+import CustomerDashboard  from "./components/customer/CustomerDashboard"
+import CustomerOrders     from "./components/customer/CustomerOrders"
+import CustomerPayments   from "./components/customer/CustomerPayments"
+import AllSeller          from "./components/customer/AllSeller"
+import AllCustomer        from "./components/seller/AllCustomer"
 
 import SellerDashboard    from "./components/seller/SellerDashboard"
-import SellerOrders    from "./components/seller/SellerOrders"
-import AddOrder from "./components/seller/AddOrder"
-import Products from "./components/seller/Products"
+import SellerOrders       from "./components/seller/SellerOrders"
+import AddOrder           from "./components/seller/AddOrder"
+import Products           from "./components/seller/Products"
+import SellerPayments     from "./components/seller/SellerPayments"
 
 
 import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
 
-	const requiredWidth = "(min-width: 920px)"
+	const requiredWidth = "(min-width: 1080px)"
+
 	const [isRequiredWidth, setIsRequiredWidth] = useState(window.matchMedia(requiredWidth).matches)
 	window.addEventListener("resize",() => setIsRequiredWidth(window.matchMedia(requiredWidth).matches))
 
@@ -42,8 +47,8 @@ export default function App() {
 
 						<Route path="dashboard" element={<CustomerDashboard/>}/>
 						<Route path="orders"    element={<CustomerOrders/>}/>
-						{/* <Route path="payments"  element={<Payments/>}/> */}
-						{/* <Route path="sellers"   element={<ListRelated/>}/> */}
+						<Route path="payments"  element={<CustomerPayments/>}/>
+						<Route path="sellers"   element={<AllSeller/>}/>
 
 					</Route>
 
@@ -53,8 +58,8 @@ export default function App() {
 						<Route path="dashboard" element={<SellerDashboard/>}/>
 						<Route path="addorder"  element={<AddOrder/>}/>
 						<Route path="orders"    element={<SellerOrders/>}/>
-						{/* <Route path="payments"  element={<Payments/>}/> */}
-						{/* <Route path="customers" element={<ListRelated/>}/> */}
+						<Route path="payments"  element={<SellerPayments/>}/>
+						<Route path="customers" element={<AllCustomer/>}/>
 						<Route path="products"  element={<Products/>}/>
 
 					</Route>

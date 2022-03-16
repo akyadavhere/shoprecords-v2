@@ -20,9 +20,7 @@ export default function Dashboard(props) {
 
          <div className="d-flex flex-row mt-5 align-items-start">
 
-            <div  style={{"width":"65.75%"}}>
-               <Graph {...props.graphProps}/>
-            </div>
+            <Graph {...props.graphProps}/>
 
             <div className="flex-grow-1 shadow rounded-3 ms-5">
                <h6 className="text-center mb-0 mt-4"> Pendings </h6>

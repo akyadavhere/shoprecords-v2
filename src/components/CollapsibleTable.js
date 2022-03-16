@@ -8,7 +8,7 @@ export default function CollapsibleTable(props) {
 
 				<table className="table table-borderless align-middle text-center m-0 p-0">
 
-					<thead className={"table-"+props.config.color}>
+					<thead className={"bg-table-"+props.config.color}>
 						<tr>
 							<td>S No.</td>
 							{
@@ -24,7 +24,7 @@ export default function CollapsibleTable(props) {
 						{
 							props.body.map((row, index) => (
 								<Fragment key={row.id}>
-									<tr className={"hover-"+props.config.color}>
+									<tr className="hover">
 										<td> {index + 1} </td>
 										{
 											row.data.map((rowData, index) => (

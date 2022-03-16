@@ -20,7 +20,7 @@ export default function CustomerOrders() {
          ],
          callbacks: [],
          config: {
-            color: "secondary"
+            color: "secondary",
          }
       }
 

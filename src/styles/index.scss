@@ -32,12 +32,8 @@ body{
    background-color: #FFFFFF;
 }
 
-.hover-primary:hover{
-   background-color: #F4ECF7 !important;
-}
-
-.hover-secondary:hover{
-   background-color: #E8F6F3 !important;
+.hover:hover{
+   background-color: #F2F4F4 !important;
 }
 
 .border-thick{
@@ -46,4 +42,12 @@ body{
 
 .right-shadow {
    box-shadow: 1.5rem 0 1rem -1rem rgb(0 0 0 / 15%);
+}
+
+.bg-table-primary{
+   background-color: #D2B3FF;
+}
+
+.bg-table-secondary{
+   background-color: #ABEBC6;
 }

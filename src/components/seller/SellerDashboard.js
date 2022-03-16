@@ -41,6 +41,10 @@ export default function SellerDashboard() {
             "Rohan Yadav",
             "120"
          ],
+         [
+            "Rohan Yadav",
+            "120"
+         ],
       ]
    }
 

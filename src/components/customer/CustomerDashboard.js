@@ -44,6 +44,10 @@ export default function CustomerDashboard() {
             "Rohan Yadav",
             "120"
          ],
+         [
+            "Rohan Yadav",
+            "120"
+         ],
       ]
    }
 
