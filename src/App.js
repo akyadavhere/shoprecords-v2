@@ -69,6 +69,6 @@ export default function App() {
 				</Route>
 			</Routes>
 		</Router>
-		: <ErrorMessage message="Your screen size is not supported"/>
+		: <ErrorMessage message="Your screen size is not supported" mobileMessage="Switch to desktop mode to view this website."/>
   	)
 }
