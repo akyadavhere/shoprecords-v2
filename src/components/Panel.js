@@ -1,4 +1,4 @@
-import React from "react"
+import React   from "react"
 import Sidebar from "./Sidebar"
 
 export default function Panel(props) {
@@ -7,7 +7,7 @@ export default function Panel(props) {
       <div className="row min-vh-100 me-0">
          <div className="col min-vh-100 px-0" style={{ "maxWidth":"300px" }}> </div>
 
-         <Sidebar menuArray={props.menuArray} url={props.url}/>
+         <Sidebar menus={props.menus} url={props.url}/>
         
          <div className="col border-thick px-0">
             <div className="mx-5 my-5">

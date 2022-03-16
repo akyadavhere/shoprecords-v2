@@ -9,7 +9,7 @@ import {
 	Tooltip,
 	Legend,
 	Filler
-} from "chart.js"
+}              from "chart.js"
 import { Line} from "react-chartjs-2"
 
 export default function Graph(props) {
@@ -27,7 +27,6 @@ export default function Graph(props) {
 		setColor(fillColor)
 	},[])
 
- 
 	ChartJS.register(
 		CategoryScale,
 		LinearScale,
@@ -86,7 +85,10 @@ export default function Graph(props) {
 	}
 
 	return (
-		<Line id="graphCanvas" options={options} data={data}/>
+		<div className="shadow p-4 rounded-3" style={{"width":"65.75%"}}>
+			<h6 className="text-center mb-4"> {props.title} </h6>			
+			<Line id="graphCanvas" options={options} data={data}/>      
+		</div>
 	)
 }
 

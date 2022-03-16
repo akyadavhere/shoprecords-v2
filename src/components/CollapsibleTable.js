@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 
-export default function CollTable(props) {
+export default function CollapsibleTable(props) {
 
  	return (
 		<div className="shadow rounded-3">
@@ -8,7 +8,7 @@ export default function CollTable(props) {
 
 				<table className="table table-borderless align-middle text-center m-0 p-0">
 
-					<thead className={props.config.headClass}>
+					<thead className={"table-"+props.config.color}>
 						<tr>
 							<td>S No.</td>
 							{
@@ -24,7 +24,7 @@ export default function CollTable(props) {
 						{
 							props.body.map((row, index) => (
 								<Fragment key={row.id}>
-									<tr className={props.config.hoverClass}>
+									<tr className={"hover-"+props.config.color}>
 										<td> {index + 1} </td>
 										{
 											row.data.map((rowData, index) => (
@@ -34,7 +34,7 @@ export default function CollTable(props) {
 										{
 											row.buttons.map((button, index) => (
 												<td key={index}>
-													<button id={row.id} className={button.class.join(" ")} onClick={props.callbacks[index]}> {button.text} </button>
+													<button id={row.id} className={button.class.join(" ")} value={button.value ? button.value : ""} onClick={props.callbacks[index]}> {button.text} </button>
 												</td>
 											))
 										}

@@ -1,19 +1,19 @@
-export default function handleStatusChange(set, value) {
+export default function handleStatusChange(set, rows) {
 
    return (
       (e) => {
-         set(value.map(item => {
-            if (item.id === e.target.id) {
-               if (item.buttons[0].text === "Accepted") {
-                  item.buttons[0].text = "Pending"
-                  item.buttons[0].class[1] = "text-warning"
+         set(rows.map(row => {
+            if (row.id === e.target.id) {
+               if (row.buttons[0].text === "Accepted") {
+                  row.buttons[0].text = "Pending"
+                  row.buttons[0].class[1] = "text-warning"
                } else {
-                  item.buttons[0].text = "Accepted"
-                  item.buttons[0].class[1] = "text-secondary"
+                  row.buttons[0].text = "Accepted"
+                  row.buttons[0].class[1] = "text-secondary"
       
                }
             }
-            return item
+            return row
          }))
       }
    )

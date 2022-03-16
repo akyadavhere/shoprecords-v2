@@ -9,12 +9,16 @@ import Login        from "./pages/Login"
 import Signup       from "./pages/Signup"
 import Customer     from "./pages/Customer"
 import Seller       from "./pages/Seller"
-import Dashboard    from "./subpages/Dashboard"
-import Orders       from "./subpages/Orders"
-import AddOrder     from "./subpages/AddOrder"
-import Products     from "./subpages/Products"
-import Payments     from "./subpages/Payments"
-import ListRelated  from "./subpages/ListRelated"
+
+import CustomerDashboard    from "./components/customer/CustomerDashboard"
+import CustomerOrders    from "./components/customer/CustomerOrders"
+
+import SellerDashboard    from "./components/seller/SellerDashboard"
+import SellerOrders    from "./components/seller/SellerOrders"
+import AddOrder from "./components/seller/AddOrder"
+import Products from "./components/seller/Products"
+
+
 import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
@@ -36,21 +40,21 @@ export default function App() {
 					<Route exact path="customer" element={<Navigate replace to="dashboard"/>}/>
 					<Route       path="customer" element={<Customer/>}>
 
-						<Route path="dashboard" element={<Dashboard/>}/>
-						<Route path="orders"    element={<Orders/>}/>
-						<Route path="payments"  element={<Payments/>}/>
-						<Route path="sellers"   element={<ListRelated/>}/>
+						<Route path="dashboard" element={<CustomerDashboard/>}/>
+						<Route path="orders"    element={<CustomerOrders/>}/>
+						{/* <Route path="payments"  element={<Payments/>}/> */}
+						{/* <Route path="sellers"   element={<ListRelated/>}/> */}
 
 					</Route>
 
 					<Route exact path="seller" element={<Navigate replace to="dashboard"/>}/>
 					<Route       path="seller" element={<Seller/>}>
 						
-						<Route path="dashboard" element={<Dashboard/>}/>
+						<Route path="dashboard" element={<SellerDashboard/>}/>
 						<Route path="addorder"  element={<AddOrder/>}/>
-						<Route path="orders"    element={<Orders/>}/>
-						<Route path="payments"  element={<Payments/>}/>
-						<Route path="customers" element={<ListRelated/>}/>
+						<Route path="orders"    element={<SellerOrders/>}/>
+						{/* <Route path="payments"  element={<Payments/>}/> */}
+						{/* <Route path="customers" element={<ListRelated/>}/> */}
 						<Route path="products"  element={<Products/>}/>
 
 					</Route>

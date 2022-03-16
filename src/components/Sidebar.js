@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from "react"
+import { useLocation, useNavigate }   from "react-router-dom"
 
 export default function Sidebar(props) {
 
@@ -8,13 +8,21 @@ export default function Sidebar(props) {
    const [activeMenu, setActiveMenu] = useState()
 
    const additionalMenus = [
-      ["Switch", "bi-toggle-on", props.url],
-      ["Logout", "bi-arrow-left-circle-fill", "/login"]
+      [
+         "Switch",
+         "bi-toggle-on",
+         props.url,
+      ],
+      [
+         "Logout",
+         "bi-arrow-left-circle-fill",
+         "/login"
+      ]
    ]
 
    useEffect(() => {
-      var pathArray = location.pathname.split("/")
-      setActiveMenu(pathArray[pathArray.length-1])
+      var paths = location.pathname.split("/")
+      setActiveMenu(paths[paths.length-1])
    },
    [location.pathname])
 
@@ -28,7 +36,7 @@ export default function Sidebar(props) {
 
          <ul className="list-group list-group-flush mt-4">
             {
-               props.menuArray.map(([text, icon], index) => (
+               props.menus.map(([text, icon], index) => (
                   <li key={index} id={text.toLowerCase().replace(" ","")} type="button" className={"list-group-item border-0 py-3 " + (activeMenu === text.toLocaleLowerCase().replace(" ","") ? "text-primary bg-light" : "")} onClick={e => navigate(e.target.id)} style={{"paddingLeft":"60px"}}>
                      <i className={"bi me-3 "+ icon + (activeMenu === text.toLocaleLowerCase().replace(" ","") ? " text-primary" : "")}></i>
                      {text}
