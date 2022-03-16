@@ -43,7 +43,7 @@ export default function CustomerOrders() {
 
 	const collTableProps = {
 		name: "CustomerOrder",
-		head: ["Seller", "Date", "Time", "Total Price", "Status"],
+		head: ["Seller", "Date", "Time", "Amount", "Status"],
 		body: rows,
 		callbacks: [handleStatusChange(setRows, rows)],
 		config: {

@@ -10,7 +10,7 @@ export default function Table(props) {
 
                <thead className={"bg-table-"+props.config.color}>
                   <tr>
-                     <td>S No.</td>
+                     <td>S</td>
                      {
                         props.head.map((columnHead, index) => (
                            <td key={index}> {columnHead} </td>

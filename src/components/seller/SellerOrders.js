@@ -45,7 +45,7 @@ export default function SellerOrders() {
 
 	const collTableProps = {
 		name: "CustomerOrder",
-		head: ["Customer", "Date", "Time", "Total Price", "Status", "Remove"],
+		head: ["Customer", "Date", "Time", "Amount", "Status", "Remove"],
 		body: rows,
 		callbacks: [() => {}, e => setRows(rows.filter(row => row.id !== e.target.id))],
 		config: {
