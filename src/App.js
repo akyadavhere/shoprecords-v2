@@ -27,7 +27,7 @@ import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
 
-	const requiredWidth = "(min-width: 960px)"
+	const requiredWidth = "(min-width: 940px)"
 
 	const [isRequiredWidth, setIsRequiredWidth] = useState(window.matchMedia(requiredWidth).matches)
 	window.addEventListener("resize",() => setIsRequiredWidth(window.matchMedia(requiredWidth).matches))
