@@ -22,15 +22,15 @@ export default function Carousel() {
 
          <div className="carousel-inner">
 
-            <div className="carousel-item active">
+            <div className="carousel-item active"data-bs-interval="2000">
                <img src={Dashboard} className="d-block w-100" alt=""/>
             </div>
 
-            <div className="carousel-item">
+            <div className="carousel-item"data-bs-interval="2000">
                <img src={AddOrder} className="d-block w-100" alt="..."/>
             </div>
 
-            <div className="carousel-item">
+            <div className="carousel-item"data-bs-interval="2000">
                <img src={Orders} className="d-block w-100" alt="..."/>
             </div>
 
