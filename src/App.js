@@ -27,7 +27,7 @@ import ErrorMessage from "./components/ErrorMessage"
 
 export default function App() {
 
-	const requiredWidth = "(min-width: 940px)"
+	const requiredWidth = "(min-width: 1200px)"
 
 	const [isRequiredWidth, setIsRequiredWidth] = useState(window.matchMedia(requiredWidth).matches)
 	window.addEventListener("resize",() => setIsRequiredWidth(window.matchMedia(requiredWidth).matches))
@@ -70,6 +70,6 @@ export default function App() {
 				</Route>
 			</Routes>
 		</Router>
-		: <ErrorMessage message="Your screen size is not supported" mobileMessage="Switch to desktop mode to view this website."/>
+		: <ErrorMessage message="Your screen size is not supported"/>
   	)
 }

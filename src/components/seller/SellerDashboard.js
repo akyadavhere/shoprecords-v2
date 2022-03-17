@@ -34,11 +34,11 @@ export default function SellerDashboard() {
             "440"
          ],
          [
-            "Jennifer",
+            "Jenni",
             "950"
          ],
          [
-            "Katherine",
+            "Kathlin",
             "1220"
          ],
          [

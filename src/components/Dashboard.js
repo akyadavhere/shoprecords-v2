@@ -19,7 +19,7 @@ export default function Dashboard(props) {
          </div>
 
          <div className="d-flex flex-row mt-5 align-items-start">
-
+            
             <Graph {...props.graphProps}/>
 
             <div className="flex-grow-1 shadow rounded-3 ms-5">
