@@ -153,7 +153,7 @@ export default function AddOrder() {
 
                <input className="form-control" required readOnly type="text" placeholder="Price" value={price ? `Rs. ${price}` : ""}/>
                
-               <input className="form-control" required type="number" min="1" placeholder="Quantity" name="quantity"/>
+               <input className="form-control" required type="number" min="0" step="any" placeholder="Quantity" name="quantity"/>
                
                <input className="form-control" required readOnly type="text" placeholder="Sub Total" value={ subTotal ? `Rs. ${subTotal}` : ""}/>
                

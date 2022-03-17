@@ -4,8 +4,8 @@ import Sidebar from "./Sidebar"
 export default function Panel(props) {
 
    return (
-      <div className="row min-vh-100 me-0">
-         <div className="col min-vh-100 px-0" style={{ "maxWidth":"300px" }}> </div>
+      <div className="row me-0">
+         <div className="col px-0" style={{ "maxWidth":"300px" }}> </div>
 
          <Sidebar menus={props.menus} url={props.url}/>
         

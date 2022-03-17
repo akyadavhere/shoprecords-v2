@@ -2,7 +2,7 @@ import React from "react"
 import Graph from "./Graph"
 
 export default function Dashboard(props) {
-   console.log(props)
+
    return (
       <>
          <div className="d-flex flex-row">

@@ -3,6 +3,7 @@ $primary:   #791AFF;
 $secondary: #00C29B;
 $danger:    #F2193F;
 $warning:   #FFBE3B;
+$info:      #EAECEE;
 
 // import bootstrap 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
@@ -17,6 +18,7 @@ body{
    display: flex;
    align-items: center;
    justify-content: center;
+   overflow-y: scroll !important;
 }
 
 #root{

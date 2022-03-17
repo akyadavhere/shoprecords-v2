@@ -10,7 +10,9 @@ export default function Home() {
 
    return (
       <>
-         <div className="bg-primary d-flex flex-row align-items-center justify-content-between shadow" style={{"height":"75px"}}>
+         {/* <div style={{"height":"75px"}}></div> */}
+
+         <div className="d-flex flex-row align-items-center justify-content-between shadow bg-primary position-fixe w-100" style={{"height":"75px", "zIndex":"10","top":"0px"}}>
             
             <h4 className="mb-0 ms-4 text-white" type="button" onClick={() => navigate("/")}> Shop Records </h4>          
             <div className="d-flex flex-row align-items-center me-4">
@@ -25,7 +27,7 @@ export default function Home() {
 
          </div>
 
-         <div className="d-flex flex-row align-items-center justify-content-between m" style={{"minHeight":"calc(95vh - 75px"}}>
+         <div className="d-flex flex-row align-items-center justify-content-between m-5">
             
             <div className="text-center p-4">
                <h1 className="fw-bold" style={{"fontSize":"48px"}}> Now handle your shop records online </h1>
@@ -33,7 +35,7 @@ export default function Home() {
             </div>
 
             <div style={{"maxWidth":"50%"}}>
-               <img src={illustration} className="img-fluid" alt="..."/>
+               <img src={illustration} className="img-fluid" alt="illustration"/>
             </div>
 
          </div>
@@ -44,14 +46,13 @@ export default function Home() {
          </div>
 
          <div className="d-flex flex-column align-items-center mb-5" style={{"marginTop":"60px"}}>
-            <h2 className="fw-bold p-4">Contributers</h2>
+            <h2 className="fw-bold mb-5">Contributers</h2>
             <Cards/>
          </div>
 
          <div className="d-flex flex-column align-items-center justify-content-center bg-dark" style={{"height":"85px"}}>
             <a className="text-light text-decoration-none m-1" href="https://www.freepik.com/vectors/business">Image source - www.freepik.com</a>
-            <a className="text-light text-decoration-none m-1" href="https://github.com/akyadavhere/shoprecords-v2">Shoprecords-v2 on Github</a>
-         
+            <a className="text-light text-decoration-none m-1" href="https://github.com/akyadavhere/shoprecords-v2">Shoprecords | Github</a>
          </div>
 
       </>
