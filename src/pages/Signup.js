@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import { useNavigate }   from "react-router-dom"
+import API from "../api/base"
 
 export default function Signup() {
    const navigate = useNavigate()
@@ -7,13 +8,16 @@ export default function Signup() {
 
    const handleSubmit = e => {
 		e.preventDefault()
-		console.log(
-         [
-            e.target[0].value,
-            e.target[1].value,
-            e.target[2].value,
-         ]
-      )
+
+      const user = {
+         "name": e.target[0].value,
+         "email": e.target[1].value,
+         "password": e.target[2].value,
+      }
+
+      API.post("signup", user)
+      .then(res => console.log(res.data))
+      
       signupForm.current.reset()
 	}
 

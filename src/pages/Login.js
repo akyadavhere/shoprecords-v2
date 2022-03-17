@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import { useNavigate }   from "react-router-dom"
+import API from "../api/base"
 
 export default function Login() {
    
@@ -14,6 +15,15 @@ export default function Login() {
             e.target[1].value
          ]
       )
+
+      var user = {
+         "email": e.target[0].value,
+         "password": e.target[1].value,
+      }
+
+      API.post("token", user)
+      .then(res => console.log(res))
+
       loginForm.current.reset()
 	}
 
