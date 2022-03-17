@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import Table                          from "../Table"
 import CollapsibleTable               from "../CollapsibleTable"
 
-import { orderList } from "../../utils/orderList"
-
 export default function SellerOrders() {
 
 	const [rows, setRows] = useState([])
@@ -42,8 +40,6 @@ export default function SellerOrders() {
 				],
 			},
 		])
-
-		setRows(orderList)
    },
    []) 
 
