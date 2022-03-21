@@ -10,9 +10,8 @@ export default function Home() {
 
    return (
       <>
-         {/* <div style={{"height":"75px"}}></div> */}
-
-         <div className="d-flex flex-row align-items-center justify-content-between shadow bg-primary position-fixe w-100" style={{"height":"75px", "zIndex":"10","top":"0px"}}>
+         <div style={{"height":"75px"}}></div>
+         <div className="d-flex flex-row align-items-center justify-content-between shadow bg-primary position-fixed w-100" style={{"height":"75px", "zIndex":"10","top":"0px"}}>
             
             <h4 className="mb-0 ms-4 text-white" type="button" onClick={() => navigate("/")}> Shop Records </h4>          
             <div className="d-flex flex-row align-items-center me-4">
