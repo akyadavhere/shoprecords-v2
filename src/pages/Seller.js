@@ -6,15 +6,24 @@ import API from "../api/base"
 export default function Seller() {
 
    const [products, setProducts] = useState([])
+   const [payments, setPayments] = useState([])
 
    useEffect(() => {
-      console.log("is repeat")
+
       API.get("product/")
       .then(res => {
          setProducts(res.data)
          console.log(res)
       })
       .catch(res => console.log(res))
+
+      API.get("payment/")
+      .then(res => {
+         console.log(res.data)
+         setPayments(res.data)
+      })
+      .catch(res => console.log(res))
+
    },[])
 
    const menus = [
@@ -44,7 +53,10 @@ export default function Seller() {
       ],
    ]
 
-   const outletContex = [products, setProducts]
+   const outletContex = {
+      products: [products, setProducts],
+      payments: [payments, setPayments]
+   }
 
    return (
       <Panel menus={menus} url="/customer">

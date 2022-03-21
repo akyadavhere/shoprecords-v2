@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router-dom"
 
 export default function Products() {
 
-   const [products, setProducts] = useOutletContext()
+   const {products:[products, setProducts]} = useOutletContext()
    const [rows, setRows] = useState([])
 
    const handleProductSubmit = e => {

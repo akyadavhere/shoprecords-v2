@@ -1,49 +1,60 @@
 import React, { useEffect, useState } from "react"
 import Table                          from "../Table"
+import API from "../../api/base"
+import { useOutletContext } from "react-router-dom"
 
 export default function SellerPayments() {
-
+   
+   const {payments:[payments, setPayments]} = useOutletContext()
    const [rows, setRows] = useState([])
 
    const handlePaymentsSubmit = e => {
       e.preventDefault()
 
-      const row = {
-         id: "2",
-         data: [e.target[0].value, "12-12-2012", "12:12", e.target[1].value],
-         buttons: [
-            {
-               text: "Delete",
-               class: ["btn btn-sm btn-link text-decoration-none text-danger"],
-            },
-         ],
+      const payment = {
+         customer: e.target[0].value,
+         amount: e.target[1].value
       }
-      setRows([...rows, row])
+      API.post("payment/", payment)
+      .then(res => {
+         console.log(res)
+         setPayments([...payments,res.data])
+      })
+      .catch(res => console.log(res))
+
       e.target.reset()
    }
 
+   const handlePaymentDelete = e => {
+      API.delete(`payment/${e.target.id}`)
+      .then(res => console.log(res))
+      .catch(res => console.log(res))
+
+      setPayments(payments.filter(payment => payment.id !== parseInt(e.target.id)))
+   }
+
+
    useEffect(() => {
-      setRows(
-         [
+      setRows(payments.map(payment => (
             {
-               id: "1",
-               data: ["Rohan Yadav", "12-12-2012", "12:12", "200"],
+               id: payment.id,
+               data: [payment.customer, "12-12-2012", "12:12", payment.amount],
                buttons: [
                   {
                      text: "Delete",
                      class: ["btn btn-sm btn-link text-danger text-decoration-none"]
                   }
-               ],
-            },
-         ],
-      )
-   }, [])
+               ]
+            }
+      )))
+   },
+   [payments])
    
 
    const tableProps = {
       head: ["Customer", "Date", "Time", "Amount (Rs)", "Remove"],
       body: rows,
-      callbacks: [e => setRows(rows.filter(row => row.id !== e.target.id))],
+      callbacks: [handlePaymentDelete],
       config: {
          color: "primary",
          shadow: true,

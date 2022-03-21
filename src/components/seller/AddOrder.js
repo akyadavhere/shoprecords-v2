@@ -5,7 +5,7 @@ import API from "../../api/base"
 
 export default function AddOrder() {
 
-   const [products] = useOutletContext()
+   const {products:[products]} = useOutletContext()
 
    const [price,    setPrice]    = useState("")
    const [subTotal, setSubTotal] = useState("")
