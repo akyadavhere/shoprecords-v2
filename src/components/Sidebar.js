@@ -7,16 +7,17 @@ export default function Sidebar(props) {
    const navigate = useNavigate()
    const [activeMenu, setActiveMenu] = useState()
 
+
    const additionalMenus = [
       [
          "Switch",
          "bi-toggle-on",
-         props.url,
+         () => navigate(props.url),
       ],
       [
          "Logout",
          "bi-arrow-left-circle-fill",
-         "/login"
+         () => {window.localStorage.removeItem("token"); navigate("/login")}
       ]
    ]
 
@@ -44,8 +45,8 @@ export default function Sidebar(props) {
                ))
             }
             {
-               additionalMenus.map(([text, icon, url], index) => (
-                  <li key={index} className="list-group-item border-0 py-3" type="button" onClick={() => navigate(url)} style={{"paddingLeft":"60px"}}>
+               additionalMenus.map(([text, icon, callback], index) => (
+                  <li key={index} className="list-group-item border-0 py-3" type="button" onClick={callback} style={{"paddingLeft":"60px"}}>
                      <i className={"bi me-3 " + icon}></i>
                      {text}
                   </li>

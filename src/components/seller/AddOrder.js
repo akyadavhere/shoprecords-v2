@@ -1,7 +1,11 @@
 import React, { useRef, useState } from "react"
+import { useOutletContext } from "react-router-dom"
 import Table                       from "../Table"
+import API from "../../api/base"
 
 export default function AddOrder() {
+
+   const [products] = useOutletContext()
 
    const [price,    setPrice]    = useState("")
    const [subTotal, setSubTotal] = useState("")
@@ -34,7 +38,7 @@ export default function AddOrder() {
    const handleAddItemFormChange = e => {
 
       if (e.target.name === "item") {
-         var price = products.filter(product => product.id === e.target.value)[0].price
+         var price = products.filter(product => product.id === parseInt(e.target.value))[0].price
          setPrice(price)
 
          if (addItemForm.current[2].value) {
@@ -55,7 +59,7 @@ export default function AddOrder() {
          var row = {
             id: e.target[0].value,
             data: [
-               products.filter(products => products.id === e.target[0].value)[0].name,
+               products.filter(products => products.id === parseInt(e.target[0].value))[0].name,
                val(e.target[1].value),
                e.target[2].value,
                val(e.target[3].value),
@@ -91,40 +95,25 @@ export default function AddOrder() {
    const handleSaveOrderFormSubmit = e => {
       e.preventDefault()
 
-      console.log(
-         [
-            total,
-            e.target[1].value,
-            rows
-         ]
-      )
+      const transaction = {
+            customer: e.target[1].value,
+            amount: total,
+            items: rows.map(row => ({
+               product: row.id,
+               quantity: row.data[2]
+            }))
+         }
+
+      console.log(transaction)
+
+      API.post("purchase/", transaction)
+      .then(res => console.log(res))
+      .catch(res => console.log(res))
+
       e.target.reset()
       handleSaveOrderFormReset()
    }
 
-   const products = [
-      {
-         id: "1",
-         name: "Item 1",
-         price: "120",
-      },
-      {
-         id: "2",
-         name: "Item 2",
-         price: "130",
-
-      },
-      {
-         id: "3",
-         name: "Item 3",
-         price: "140",
-      },
-      {
-         id: "4",
-         name: "Item 4",
-         price: "150",
-      },
-   ]
 
    const tableProps = {
       head: ["Item","Price (Rs)","Quantity","Total (Rs)","Remove"],
@@ -143,10 +132,10 @@ export default function AddOrder() {
             <form ref={addItemForm} className="input-group p-4" onChange={handleAddItemFormChange} onSubmit={handleAddItemFormSubmit}>
                
                <select className="form-select" defaultValue="" required name="item">
-                  <option value="" hidden>Select Item </option>
+                  <option value="" hidden>Select Item</option>
                   {
-                     products.map((item,index) => (
-                        <option key={index} value={item.id}> {item.name} </option>
+                     products.map(item => (
+                        <option key={item.id} value={item.id}> {item.name} </option>
                      ))
                   }
                </select>

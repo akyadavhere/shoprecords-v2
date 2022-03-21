@@ -1,8 +1,21 @@
-import React      from "react"
+import React, { useEffect, useState } from "react"
 import { Outlet } from "react-router-dom"
-import Panel      from "../components/Panel"
+import Panel from "../components/Panel"
+import API from "../api/base"
 
 export default function Seller() {
+
+   const [products, setProducts] = useState([])
+
+   useEffect(() => {
+      console.log("is repeat")
+      API.get("product/")
+      .then(res => {
+         setProducts(res.data)
+         console.log(res)
+      })
+      .catch(res => console.log(res))
+   },[])
 
    const menus = [
       [
@@ -31,9 +44,11 @@ export default function Seller() {
       ],
    ]
 
+   const outletContex = [products, setProducts]
+
    return (
       <Panel menus={menus} url="/customer">
-         <Outlet/>
+         <Outlet context={outletContex}/>
       </Panel>
    )
 }
