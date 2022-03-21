@@ -1,53 +1,65 @@
 import React, { useEffect, useState } from "react"
 import Table                          from "../Table"
 import CollapsibleTable               from "../CollapsibleTable"
+import API from "../../api/base"
+import { useOutletContext } from "react-router-dom"
 
 export default function SellerOrders() {
 
+	const {orders: [orders, setOrders]} = useOutletContext()
 	const [rows, setRows] = useState([])
+
+	const handeOrderDelete = e => {
+
+		API.delete(`order/${e.target.id}`)
+		.then(res => console.log(res))
+		.catch(res => console.log(res))
+
+		setOrders(orders.filter(order => order.id !== parseInt(e.target.id)))
+	}
 
 	useEffect(() => {
 
-      const tableProps = {
-         head: ["Product", "Price", "Quantity", "Sub Total"],
-         body: [
-            {
-               id: "0",
-               data: ["Rice", "50", "5", "250"],
-               buttons: [],
-            },
-         ],
-         callbacks: [],
-         config: {
-            color: "secondary"
-         }
-      }
-
-      setRows([
+		setRows(orders.map(order => (
 			{
-				id: "0",
-				data: ["Rohan Yadav", "12-12-2012", "12:12", "1200"],
-				child: <Table {...tableProps}/>,
+				id: order.id,
+				data: [order.customer, "12-12-2012", "12:12", order.amount],
+				child: <Table {
+					...{
+						head: ["Product", "Price", "Quantity", "Total"],
+						body: order.items.map(item => (
+							{
+								id: item.id,
+								data: [item.name, item.price, item.quantity, item.total],
+								buttons: [],
+							}
+						)),
+						callbacks: [],
+						config: {
+							color: "secondary"
+						}
+					}
+				}/>,
 				buttons: [
 					{
-						text: "Accepted",
-						class: ["btn btn-sm btn-link text-decoration-none text-secondary"]
+						text: order.status ? "Accepted" : "Pending",
+						class: ["btn btn-sm btn-link text-decoration-none", `text-${order.status ? "secondary" : "warning"}`]
 					},
 					{
 						text: "Delete",
 						class: ["btn btn-sm btn-link text-decoration-none text-danger"],
-					},
-				],
-			},
-		])
+					}
+				]
+			}
+		)))
    },
-   []) 
+   [orders]) 
 
 	const collTableProps = {
 		name: "CustomerOrder",
 		head: ["Customer", "Date", "Time", "Amount", "Status", "Remove"],
 		body: rows,
-		callbacks: [() => {}, e => setRows(rows.filter(row => row.id !== e.target.id))],
+		callbacks: [() => {}, handeOrderDelete],
 		config: {
          color: "primary"
 		}

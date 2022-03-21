@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 import Panel from "../components/Panel"
 import API from "../api/base"
 
 export default function Seller() {
 
+   const location = useLocation()
    const [products, setProducts] = useState([])
    const [payments, setPayments] = useState([])
+   const [orders, setOrders] = useState([])
 
    useEffect(() => {
 
@@ -24,7 +26,14 @@ export default function Seller() {
       })
       .catch(res => console.log(res))
 
-   },[])
+		API.get("order/")
+		.then(res => {
+         console.log(res.data)
+         setOrders(res.data)
+      })
+		.catch(res => console.log(res))
+
+   },[location.pathname])
 
    const menus = [
       [
@@ -55,7 +64,8 @@ export default function Seller() {
 
    const outletContex = {
       products: [products, setProducts],
-      payments: [payments, setPayments]
+      payments: [payments, setPayments],
+      orders: [orders, setOrders],
    }
 
    return (
