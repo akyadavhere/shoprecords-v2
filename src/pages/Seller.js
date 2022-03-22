@@ -9,8 +9,16 @@ export default function Seller() {
    const [products, setProducts] = useState([])
    const [payments, setPayments] = useState([])
    const [orders, setOrders] = useState([])
+   const [customers, setCustomers] = useState([])
 
    useEffect(() => {
+
+      API.get("order/")
+		.then(res => {
+         console.log(res.data)
+         setOrders(res.data)
+      })
+		.catch(res => console.log(res))
 
       API.get("product/")
       .then(res => {
@@ -26,12 +34,12 @@ export default function Seller() {
       })
       .catch(res => console.log(res))
 
-		API.get("order/")
-		.then(res => {
+      API.get("customer/")
+      .then(res => {
          console.log(res.data)
-         setOrders(res.data)
+         setCustomers(res.data)
       })
-		.catch(res => console.log(res))
+      .catch(res => console.log(res))
 
    },[location.pathname])
 
@@ -66,6 +74,7 @@ export default function Seller() {
       products: [products, setProducts],
       payments: [payments, setPayments],
       orders: [orders, setOrders],
+      customers: [customers, setCustomers],
    }
 
    return (

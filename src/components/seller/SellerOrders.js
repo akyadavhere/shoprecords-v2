@@ -56,7 +56,7 @@ export default function SellerOrders() {
    [orders]) 
 
 	const collTableProps = {
-		name: "CustomerOrder",
+		name: "SellerOrder",
 		head: ["Customer", "Date", "Time", "Amount", "Status", "Remove"],
 		body: rows,
 		callbacks: [() => {}, handeOrderDelete],

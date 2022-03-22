@@ -1,6 +1,30 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 
 export default function CollapsibleTable(props) {
+
+	const [collapse, setCollapse] = useState([])
+
+	const handleCollapse = e => {
+		console.log(collapse)
+		setCollapse(collapse.map(item => {
+			if (item.id === e.target.id) {
+				item.show = !item.show
+			} return item
+		}))
+		console.log(collapse)
+	}
+
+	useEffect(() => {
+		var temp = props.body.map(row => ({
+			id: props.name+row.id,
+			show: false,
+		}))
+		setCollapse(temp)
+		console.log(temp)
+		console.log(collapse)
+
+	},[props.body])
+
 
  	return (
 		<div className="shadow rounded-3">
@@ -39,13 +63,13 @@ export default function CollapsibleTable(props) {
 											))
 										}
 										<td>
-											<button className="btn btn-sm btn-link text-primary text-decoration-none" data-bs-toggle="collapse" data-bs-target={"#"+props.name+row.id}> Show </button>
+											<button id={props.name+row.id} className="btn btn-sm btn-link text-primary text-decoration-none" onClick={handleCollapse}> Show </button>
 										</td>
 									</tr>				
 
 									<tr>
 										<td colSpan="10" className="p-0">
-											<div id={props.name+row.id} className="collapse">
+											<div id={props.name+row.id} className={"expandible "+(collapse.length > 0 ? (collapse.filter(item => item.id == props.name+row.id)[0].show ? "show" : "") :"")}>
 												{row.child}
 											</div>
 										</td>

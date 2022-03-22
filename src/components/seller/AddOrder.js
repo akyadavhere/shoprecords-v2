@@ -6,6 +6,7 @@ import API from "../../api/base"
 export default function AddOrder() {
 
    const {products:[products]} = useOutletContext()
+   const {customers:[customers]} = useOutletContext()
 
    const [price,    setPrice]    = useState("")
    const [subTotal, setSubTotal] = useState("")
@@ -160,7 +161,15 @@ export default function AddOrder() {
                
                <input className="form-control" required readOnly type="text" placeholder="Grand Total" value={total ? `Rs. ${total}` : ""} style={{"width":"12%"}}/>
                
-               <input className="form-control" required type="email" placeholder="Customer's Email" style={{"width":"48%"}}/>
+               <input className="form-control" list="customerList" required type="email" placeholder="Customer's Email" style={{"width":"48%"}}/>
+               
+               <datalist id="customerList">
+                  {
+                     customers.map(customer => (
+                        <option key={customer.id} value={customer.email}> {customer.name} </option>
+                     ))
+                  }
+               </datalist>
                
                <input className="form-control btn-secondary text-white" type="submit" value="Save"/>
                

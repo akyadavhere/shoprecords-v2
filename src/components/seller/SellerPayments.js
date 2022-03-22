@@ -6,6 +6,7 @@ import { useOutletContext } from "react-router-dom"
 export default function SellerPayments() {
    
    const {payments:[payments, setPayments]} = useOutletContext()
+   const {customers:[customers]} = useOutletContext()
    const [rows, setRows] = useState([])
 
    const handlePaymentsSubmit = e => {
@@ -68,9 +69,17 @@ export default function SellerPayments() {
 
             <form  className="input-group p-4" onSubmit={handlePaymentsSubmit}>
 
-               <input className="form-control" required type="email" placeholder="Customer's Email" style={{"width":"40%"}}/>
+               <input className="form-control" list="customerList" required type="email" placeholder="Customer's Email" style={{"width":"40%"}}/>
                
-               <input className="form-control" required type="number" min="0" step="100" placeholder="Amount"/>
+               <datalist className="" id="customerList">
+                  {
+                     customers.map(customer => (
+                        <option key={customer.id} value={customer.email}> {customer.name} </option>
+                     ))
+                  }
+               </datalist>
+               
+               <input className="form-control" required type="number" min="1" placeholder="Amount"/>
                
                <input className="form-control btn-primary text-white" type="submit" value="Add"/>
             

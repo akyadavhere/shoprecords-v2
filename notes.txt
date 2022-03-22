@@ -1,0 +1,5 @@
+collapsible table show button now closing the div. fix it using manually adding and removing show
+class from div. - fixed by using manual class with transition and display property
+check the proper working and requirement of every models.cascade field - fixed all issue with 
+proper check
+fix all equal and not equal comparison
