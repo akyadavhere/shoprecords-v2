@@ -20,11 +20,11 @@ export default function SellerDashboard() {
       setAmoutOverviews([
          [
             "Total Sells",
-            dashboard.total,
+            dashboard.total ? dashboard.total : 0,
          ],
          [
             "Amount Paid",
-            dashboard.paid,
+            dashboard.paid ? dashboard.paid : 0,
          ],
          [
             "Amount Due",
