@@ -9,14 +9,14 @@ export default function AllCustomer() {
    const [rows, setRows] = useState([])
 
    const handleDeleteCustomer = e => {
-      var customer = customers.filter(customers => customers.id == e.target.id)[0]
-      if (customer.total - customer.paid == 0) {
+      var customer = customers.filter(customers => customers.id === parseInt(e.target.id))[0]
+      if (Math.round(customer.total - customer.paid) === 0) {
 
          API.delete(`customer/${e.target.id}`)
-         .then(res => console.log(res))
-         .catch(res => console.log(res))
+         .then(res => console.log("response data for delete request to customer",res.data))
+         .catch(res => console.log("error in delete request to customer",res))
 
-         setCustomers(customers.filter(customers => customers.id != e.target.id))
+         setCustomers(customers.filter(customers => customers.id !== parseInt(e.target.id)))
       }
    }
 
@@ -24,7 +24,7 @@ export default function AllCustomer() {
       setRows(customers.map(customer => (
          {
             id: customer.id,
-            data: [customer.name, customer.email, customer.total, customer.paid, customer.total - customer.paid],
+            data: [customer.name, customer.email, customer.total, customer.paid, Math.round(customer.total - customer.paid)],
             buttons: [
                {
                   text: "Delete",

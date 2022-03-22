@@ -12,52 +12,54 @@ export default function SellerOrders() {
 	const handeOrderDelete = e => {
 
 		API.delete(`order/${e.target.id}`)
-		.then(res => console.log(res))
-		.catch(res => console.log(res))
+		.then(res => console.log("response data for delete request to order",res.data))
+		.catch(res => console.log("error in delete request to order",res))
 
 		setOrders(orders.filter(order => order.id !== parseInt(e.target.id)))
 	}
 
 	useEffect(() => {
 
-		setRows(orders.map(order => (
-			{
-				id: order.id,
-				data: [order.customer, "12-12-2012", "12:12", order.amount],
-				child: <Table {
-					...{
-						head: ["Product", "Price", "Quantity", "Total"],
-						body: order.items.map(item => (
-							{
-								id: item.id,
-								data: [item.name, item.price, item.quantity, item.total],
-								buttons: [],
+		setRows(orders.map(order => {
+			var datetime = new Date(order.datetime)
+			return (
+				{
+					id: order.id,
+					data: [order.customer, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), Number(order.amount)],
+					child: <Table {
+						...{
+							head: ["Product", "Price (Rs)", "Quantity", "Total (Rs)"],
+							body: order.items.map(item => (
+								{
+									id: item.id,
+									data: [item.name, item.price, item.quantity, item.total],
+									buttons: [],
+								}
+							)),
+							callbacks: [],
+							config: {
+								color: "secondary"
 							}
-						)),
-						callbacks: [],
-						config: {
-							color: "secondary"
 						}
-					}
-				}/>,
-				buttons: [
-					{
-						text: order.status ? "Accepted" : "Pending",
-						class: ["btn btn-sm btn-link text-decoration-none", `text-${order.status ? "secondary" : "warning"}`]
-					},
-					{
-						text: "Delete",
-						class: ["btn btn-sm btn-link text-decoration-none text-danger"],
-					}
-				]
-			}
-		)))
+					}/>,
+					buttons: [
+						{
+							text: order.status ? "Accepted" : "Pending",
+							class: ["btn btn-sm btn-link text-decoration-none", `text-${order.status ? "secondary" : "warning"}`]
+						},
+						{
+							text: "Delete",
+							class: ["btn btn-sm btn-link text-decoration-none text-danger"],
+						}
+					]
+				}
+		)}))
    },
    [orders]) 
 
 	const collTableProps = {
 		name: "SellerOrder",
-		head: ["Customer", "Date", "Time", "Amount", "Status", "Remove"],
+		head: ["Customer", "Date", "Time", "Amount (Rs)", "Status", "Remove"],
 		body: rows,
 		callbacks: [() => {}, handeOrderDelete],
 		config: {

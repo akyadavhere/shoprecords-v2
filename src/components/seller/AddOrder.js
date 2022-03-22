@@ -105,11 +105,9 @@ export default function AddOrder() {
             }))
          }
 
-      console.log(transaction)
-
       API.post("purchase/", transaction)
-      .then(res => console.log(res))
-      .catch(res => console.log(res))
+      .then(res => console.log("response data for post request to purchase",res.data))
+      .catch(res => console.log("error in post request to purchase",res))
 
       e.target.reset()
       handleSaveOrderFormReset()

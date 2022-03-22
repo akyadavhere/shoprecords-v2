@@ -25,7 +25,7 @@ export default function Signup() {
 
       API.post("signup/", user)
       .then(res => {
-         console.log(res.data)
+         console.log("response data for post request to signup",res.data)
          if (res.status === 200) {
 
             if (res.data.message) {
@@ -39,7 +39,7 @@ export default function Signup() {
             toast.show()
          }
       })
-      .catch(res => console.log(res))
+      .catch(res => console.log("error in post request to signup",res))
       
       signupForm.current.reset()
 	}

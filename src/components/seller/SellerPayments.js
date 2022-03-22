@@ -18,28 +18,28 @@ export default function SellerPayments() {
       }
       API.post("payment/", payment)
       .then(res => {
-         console.log(res)
-         setPayments([...payments,res.data])
+         setPayments([res.data,...payments])
       })
-      .catch(res => console.log(res))
-
+      .catch(res => console.log("error in post request to payment",res))
       e.target.reset()
    }
 
    const handlePaymentDelete = e => {
       API.delete(`payment/${e.target.id}`)
-      .then(res => console.log(res))
-      .catch(res => console.log(res))
+      .then(res => console.log("response data for delete request to payment",res.data))
+      .catch(res => console.log("error in delete request to payment",res))
 
       setPayments(payments.filter(payment => payment.id !== parseInt(e.target.id)))
    }
 
 
    useEffect(() => {
-      setRows(payments.map(payment => (
+      setRows(payments.map(payment => {
+         var datetime = new Date(payment.datetime)
+         return (
             {
                id: payment.id,
-               data: [payment.customer, "12-12-2012", "12:12", payment.amount],
+               data: [payment.customer, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), payment.amount],
                buttons: [
                   {
                      text: "Delete",
@@ -47,7 +47,7 @@ export default function SellerPayments() {
                   }
                ]
             }
-      )))
+      )}))
    },
    [payments])
    

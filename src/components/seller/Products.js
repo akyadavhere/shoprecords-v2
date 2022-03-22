@@ -18,9 +18,9 @@ export default function Products() {
 
       API.post("product/", product)
       .then(res => {
-         console.log(res)
-         setProducts([...products, res.data])
-      }).catch(res => console.log(res))
+         console.log("response data for post request to product",res.data)
+         setProducts([res.data, ...products])
+      }).catch(res => console.log("error in post request to product",res))
       e.target.reset()
    }
 
@@ -28,15 +28,14 @@ export default function Products() {
    const handleProductDelete = e => {
 
       API.delete(`product/${e.target.id}`)
-      .then(res => console.log(res))
-      .catch(res => console.log(res))
+      .then(res => console.log("response data for delete request to product",res))
+      .catch(res => console.log("error in delete request to product",res))
 
       setProducts(products.filter(product => product.id !== parseInt(e.target.id)))
    }
 
 
    useEffect(() => {
-      console.log(products)
       setRows(products.map(product => (
          {
             id: product.id,
@@ -49,7 +48,6 @@ export default function Products() {
             ]
          }
       ))) 
-
 	},[products])
 
 

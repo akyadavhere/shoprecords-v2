@@ -5,25 +5,19 @@ export default function CollapsibleTable(props) {
 	const [collapse, setCollapse] = useState([])
 
 	const handleCollapse = e => {
-		console.log(collapse)
 		setCollapse(collapse.map(item => {
 			if (item.id === e.target.id) {
 				item.show = !item.show
 			} return item
 		}))
-		console.log(collapse)
 	}
 
 	useEffect(() => {
-		var temp = props.body.map(row => ({
+		setCollapse(props.body.map(row => ({
 			id: props.name+row.id,
 			show: false,
-		}))
-		setCollapse(temp)
-		console.log(temp)
-		console.log(collapse)
-
-	},[props.body])
+		})))
+	},[props])
 
 
  	return (
@@ -69,7 +63,7 @@ export default function CollapsibleTable(props) {
 
 									<tr>
 										<td colSpan="10" className="p-0">
-											<div id={props.name+row.id} className={"expandible "+(collapse.length > 0 ? (collapse.filter(item => item.id == props.name+row.id)[0].show ? "show" : "") :"")}>
+											<div id={props.name+row.id} className={"expandible "+(collapse.length > 0 ? (collapse.filter(item => item.id === props.name+row.id)[0] ? (collapse.filter(item => item.id === props.name+row.id)[0].show ? "show" : "") : "") : "")}>
 												{row.child}
 											</div>
 										</td>

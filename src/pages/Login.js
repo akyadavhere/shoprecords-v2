@@ -29,7 +29,7 @@ export default function Login() {
                   navigate("/seller")
                }, 500);
             }
-         }).catch(res => console.log(res))
+         }).catch(res => console.log("error in post request to verify",res))
 
       } else {
          setIsLoading(false)
@@ -49,7 +49,7 @@ export default function Login() {
 
       API.post("token/", user)
       .then(res => {
-         console.log(res.data)
+         console.log("response data for post request to token",res.data)
          if (res.status === 200) {
             window.localStorage.setItem("token",JSON.stringify(res.data))
             API.defaults.headers.common["Authorization"] = `Bearer ${JSON.parse(window.localStorage.getItem("token")).access}`
@@ -57,7 +57,7 @@ export default function Login() {
             navigate("/seller")
          }
       }).catch(res => {
-         console.log(res)
+         console.log("error in post request to token",res)
          var toast = new ToastClass(toastRef.current)
          toast.show()
       })
