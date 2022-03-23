@@ -39,7 +39,6 @@ export default function Login() {
 
 
    const handleSubmit = e => {
-
 		e.preventDefault()
 
       var user = {
@@ -54,15 +53,15 @@ export default function Login() {
             window.localStorage.setItem("token",JSON.stringify(res.data))
             API.defaults.headers.common["Authorization"] = `Bearer ${JSON.parse(window.localStorage.getItem("token")).access}`
 
-            navigate("/seller")
+            e.target[3].checked ? navigate("/seller") : navigate("/customer")
+            loginForm.current.reset()
          }
       }).catch(res => {
          console.log("error in post request to token",res)
          var toast = new ToastClass(toastRef.current)
          toast.show()
+         loginForm.current.reset()
       })
-
-      loginForm.current.reset()
 	}
 
   return (
@@ -85,6 +84,20 @@ export default function Login() {
                   <input className="form-control mb-4" required type="password" placeholder="Password"/>
                   
                   <input className="form-control btn-primary text-white mb-4" type="submit" value="Login"/>
+                  
+                  <div className="d-flex flex-row justify-content-between mb-4 mt-2">
+                     
+                     <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="radio" id="radio1" value={2}/>
+                        <label className="form-check-label" htmlFor="radio1"> Seller </label>
+                     </div>
+
+                     <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="radio" id="radio2" value={5} defaultChecked/>
+                        <label className="form-check-label" htmlFor="radio2"> Customer </label>
+                     </div>
+
+                  </div>
                
                </form>
 
