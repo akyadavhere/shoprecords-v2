@@ -28,7 +28,7 @@ export default function Seller() {
             console.log("response data for get request to customer",res.data)
             setCustomers(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to customer",res))
       }
       else if (activeOutlet === "addorder"){
          API.get("product/")
@@ -36,14 +36,14 @@ export default function Seller() {
             console.log("response data for get request to product",res.data)
             setProducts(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to product",res))
 
          API.get("customer/")
          .then(res => {
             console.log("response data for get request to customer",res.data)
             setCustomers(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to customer",res))
       }
       else if (activeOutlet === "orders"){
          API.get("order/")
@@ -51,7 +51,7 @@ export default function Seller() {
             console.log("response data for get request to order",res.data)
             setOrders(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to order",res))
       }
       else if (activeOutlet === "products"){
          API.get("product/")
@@ -59,7 +59,7 @@ export default function Seller() {
             console.log("response data for get request to product",res.data)
             setProducts(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to product",res))
       }
       else if (activeOutlet === "payments"){
          API.get("payment/")
@@ -67,14 +67,14 @@ export default function Seller() {
             console.log("response data for get request to payment",res.data)
             setPayments(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to payment",res))
 
          API.get("customer/")
          .then(res => {
             console.log("response data for get request to customer",res.data)
             setCustomers(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to customer",res))
       }
       else if (activeOutlet === "customers"){
          API.get("customer/")
@@ -82,7 +82,7 @@ export default function Seller() {
             console.log("response data for get request to customer",res.data)
             setCustomers(res.data)
          })
-         .catch(res => console.log("error in get request to dashboard",res))
+         .catch(res => console.log("error in get request to customer",res))
       }
 
    },[location.pathname])

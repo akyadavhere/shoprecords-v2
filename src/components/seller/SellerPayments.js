@@ -39,7 +39,7 @@ export default function SellerPayments() {
          return (
             {
                id: payment.id,
-               data: [payment.customer, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), payment.amount],
+               data: [payment.opposite_role, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), payment.amount],
                buttons: [
                   {
                      text: "Delete",

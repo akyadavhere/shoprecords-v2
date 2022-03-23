@@ -1,51 +1,71 @@
 import React, { useEffect, useState } from "react"
 import Table                          from "../Table"
 import CollapsibleTable               from "../CollapsibleTable"
-import handleStatusChange             from "../../utils/handleStatusChange"
+import API from "../../api/base"
+import { useOutletContext } from "react-router-dom"
 
 export default function CustomerOrders() {
 
 	const [rows, setRows] = useState([])
+	const {orders: [orders, setOrders]} = useOutletContext([])
+
+	const handleStatusChange = e => {
+
+		API.patch(`customerorder/${e.target.id}`)
+		.then(res => {
+			console.log("response data for patch request to customerorder", res.data)
+			setOrders(orders.map(order => {
+				if (order.id === parseInt(e.target.id)){
+					order.status = !order.status
+				}
+				return order
+			}))
+		})
+		.catch(res => console.log("error in patch request to customerorder", res))
+	}
+
 
 	useEffect(() => {
 
-      const tableProps = {
-         head: ["Product", "Price", "Quantity", "Sub Total"],
-         body: [
-            {
-               id: "1",
-               data: ["Rice", "50", "5", "250"],
-               buttons: [],
-            },
-         ],
-         callbacks: [],
-         config: {
-            color: "secondary",
-         }
-      }
-
-      setRows([
-			{
-				id: "1",
-				data: ["Rohan Yadav", "12-12-2012", "12:12", "1200"],
-				child: <Table {...tableProps}/>,
-				buttons: [
-					{
-						text: "Accepted",
-						class: ["btn btn-sm btn-link text-decoration-none", "text-secondary"],
-					},
-				],
-			},
-		])
+		setRows(orders.map(order => {
+			var datetime = new Date(order.datetime)
+			return (
+				{
+					id: order.id,
+					data: [order.opposite_role, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), Number(order.amount)],
+					child: <Table {
+						...{
+							head: ["Product", "Price (Rs)", "Quantity", "Total (Rs)"],
+							body: order.items.map(item => (
+								{
+									id: item.id,
+									data: [item.name, item.price, item.quantity, item.total],
+									buttons: [],
+								}
+							)),
+							callbacks: [],
+							config: {
+								color: "secondary"
+							}
+						}
+					}/>,
+					buttons: [
+						{
+							text: order.status ? "Accepted" : "Pending",
+							class: ["btn btn-sm btn-link text-decoration-none", `text-${order.status ? "secondary" : "warning"}`]
+						}
+					]
+				}
+		)}))
    },
-   []) 
+   [orders]) 
 
 
 	const collTableProps = {
 		name: "CustomerOrder",
 		head: ["Seller", "Date", "Time", "Amount", "Status"],
 		body: rows,
-		callbacks: [handleStatusChange(setRows, rows)],
+		callbacks: [handleStatusChange],
 		config: {
          color: "primary"
 		}

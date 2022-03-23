@@ -1,20 +1,29 @@
-import React            from "react"
+import React, { useEffect, useState }            from "react"
+import { useOutletContext } from "react-router-dom"
 import Table            from "../Table"
 
 export default function AllSeller() {
 
+   const {sellers:[sellers]} = useOutletContext()
+   const [rows, setRows] = useState([])
+
+   useEffect(() => {
+      setRows(sellers.map(seller => (
+         {
+            id: seller.id,
+            data: [seller.name, seller.email, seller.total, seller.paid, Math.round(seller.total - seller.paid)],
+            buttons: []
+         }
+      )))
+   },[sellers])
+
+
    const tableProps = {
       head: ["Seller", "Email", "Total (Rs)", "Paid (Rs)", "Due (Rs)"],
-      body: [
-         {
-            id: "1",
-            data: ["Rohan Yadav", "email@example.com", "2200", "1200", "1000"],
-            buttons: [],
-         }
-      ],
-     config: {
-      color: "primary",
-      shadow: "primary"
+      body: rows,
+      config: {
+         color: "primary",
+         shadow: "primary"
      }
    }
 

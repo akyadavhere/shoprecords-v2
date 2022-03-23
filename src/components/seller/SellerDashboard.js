@@ -10,11 +10,13 @@ export default function SellerDashboard() {
    const [amountOverviews, setAmoutOverviews] = useState([])
    const [graphs, setGraphs] = useState([])
 
+
    useEffect(() => {
       setPendings(customers.splice(0,5).map(customer => (
          [customer.name, parseInt(customer.total-customer.paid)]
       )).sort((a, b) => (a[1] > b[1]) ? -1 : 1))
    },[customers])
+   
    
    useEffect(() => {
       setAmoutOverviews([

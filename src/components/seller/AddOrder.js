@@ -43,11 +43,11 @@ export default function AddOrder() {
          setPrice(price)
 
          if (addItemForm.current[2].value) {
-            setSubTotal(addItemForm.current[2].value * price)
+            setSubTotal(Number((addItemForm.current[2].value * price).toFixed(2)))
          }
       }
       else if (e.target.name === "quantity" && addItemForm.current[1].value) {
-         setSubTotal(val(addItemForm.current[1].value) * e.target.value)
+         setSubTotal(Number((val(addItemForm.current[1].value) * e.target.value).toFixed(2)))
       }
    }  
 

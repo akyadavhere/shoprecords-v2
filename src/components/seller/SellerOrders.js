@@ -25,7 +25,7 @@ export default function SellerOrders() {
 			return (
 				{
 					id: order.id,
-					data: [order.customer, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), Number(order.amount)],
+					data: [order.opposite_role, datetime.toDateString().slice(4), datetime.toTimeString().slice(0,5), Number(order.amount)],
 					child: <Table {
 						...{
 							head: ["Product", "Price (Rs)", "Quantity", "Total (Rs)"],
