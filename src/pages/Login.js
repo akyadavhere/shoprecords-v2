@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useNavigate }   from "react-router-dom"
+import { useNavigate, useOutletContext }   from "react-router-dom"
 import API from "../api/base"
 import Spinner from "../components/Spinner"
 import Toast from "../components/Toast"
@@ -8,6 +8,7 @@ import { Toast as ToastClass } from "bootstrap"
 export default function Login() {
    
    const [isLoading, setIsLoading] = useState(true)
+   const [, setIsLogin] = useOutletContext()
    const navigate = useNavigate()
    const loginForm = useRef()
    const toastRef = useRef()
@@ -24,10 +25,10 @@ export default function Login() {
          API.post("verify/", data)
          .then(res => {
             if (res.status === 200) {
-               setTimeout(() => {
-                  setIsLoading(false)
-                  navigate("/seller")
-               }, 500);
+               setIsLogin(true)
+               localStorage.setItem("loggedin",true)
+               setIsLoading(false)
+               navigate("/customer/dashboard")
             }
          }).catch(res => console.log("error in post request to verify",res))
 
@@ -35,7 +36,7 @@ export default function Login() {
          setIsLoading(false)
       }
 
-   },[navigate])
+   },[navigate, setIsLogin])
 
 
    const handleSubmit = e => {
@@ -52,13 +53,13 @@ export default function Login() {
          if (res.status === 200) {
             window.localStorage.setItem("token",JSON.stringify(res.data))
             API.defaults.headers.common["Authorization"] = `Bearer ${JSON.parse(window.localStorage.getItem("token")).access}`
-
+            setIsLogin(true)
+            localStorage.setItem("loggedin",true)
             e.target[3].checked ? navigate("/seller") : navigate("/customer")
-            loginForm.current.reset()
          }
       }).catch(res => {
          console.log("error in post request to token",res)
-         var toast = new ToastClass(toastRef.current)
+         let toast = new ToastClass(toastRef.current)
          toast.show()
          loginForm.current.reset()
       })

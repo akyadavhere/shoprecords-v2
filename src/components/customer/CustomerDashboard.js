@@ -10,7 +10,6 @@ export default function CustomerDashboard() {
    const [amountOverviews, setAmoutOverviews] = useState([])
    const [graphs, setGraphs] = useState([])
 
-
    useEffect(() => {
       setPendings(sellers.splice(0,5).map(seller => (
          [seller.name, parseInt(seller.total-seller.paid)]

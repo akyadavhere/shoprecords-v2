@@ -17,7 +17,7 @@ export default function Sidebar(props) {
       [
          "Logout",
          "bi-arrow-left-circle-fill",
-         () => {window.localStorage.removeItem("token"); navigate("/login")}
+         () => {window.localStorage.clear(); navigate("/login")}
       ]
    ]
 

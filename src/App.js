@@ -22,6 +22,7 @@ import AddOrder           from "./components/seller/AddOrder"
 import Products           from "./components/seller/Products"
 import SellerPayments     from "./components/seller/SellerPayments"
 
+import Root from "./pages/Root"
 import Home from "./pages/Home"
 import ErrorMessage from "./components/ErrorMessage"
 
@@ -36,7 +37,7 @@ export default function App() {
 	 	<Router>
 			<Routes>
 				<Route exact path="/" element={<Navigate replace to="home"/>}/>
-				<Route       path="/">
+				<Route       path="/" element={<Root/>}>
 
 					<Route path="home"  element={<Home/>}/>
 					<Route path="login"  element={<Login/>}/>

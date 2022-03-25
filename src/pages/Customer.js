@@ -1,61 +1,69 @@
 import React, { useEffect, useState } from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom"
 import Panel      from "../components/Panel"
 import API from "../api/base"
 
 export default function Customer() {
 
+   const [isLogin] = useOutletContext()
    const location = useLocation()
    const [dashboard, setDashboard] = useState([])
    const [orders, setOrders] = useState([])
    const [payments, setPayments] = useState([])
    const [sellers, setSellers] = useState([])
+   const navigate = useNavigate()
+
 
 
    useEffect(() => {
-      const activeOutlet = location.pathname.split("/")[location.pathname.split("/").length-1]
-      
-      if (activeOutlet === "dashboard"){
-         API.get("customerdashboard/")
-         .then(res => {
-            console.log("response data for get request to customerdashboard",res.data)
-            setDashboard(res.data)
-         })
-         .catch(res => console.log("error in get request to customerdashboard",res))
+      if (! isLogin) {
+         navigate("/login")
+      } 
+      else{
 
-         API.get("seller/")
-         .then(res => {
-            console.log("response data for get request to customer",res.data)
-            setSellers(res.data)
-         })
-         .catch(res => console.log("error in get request to dashboard",res))
-      }
-      else if (activeOutlet === "orders"){
-         API.get("customerorder/")
-         .then(res => {
-            console.log("response data for get request to customerorder",res.data)
-            setOrders(res.data)
-         })
-         .catch(res => console.log("error in get request to customerorder",res))
-      }
-      else if (activeOutlet === "payments"){
-         API.get("customerpayment/")
-         .then(res => {
-            console.log("response data for get request to payment",res.data)
-            setPayments(res.data)
-         })
-         .catch(res => console.log("error in get request to dashboard",res))
-      }
-      else if (activeOutlet === "sellers"){
-         API.get("seller/")
-         .then(res => {
-            console.log("response data for get request to customer",res.data)
-            setSellers(res.data)
-         })
-         .catch(res => console.log("error in get request to dashboard",res))
-      }
+         const activeOutlet = location.pathname.split("/")[location.pathname.split("/").length-1]
+         
+         if (activeOutlet === "dashboard"){
+            API.get("customerdashboard/")
+            .then(res => {
+               console.log("response data for get request to customerdashboard",res.data)
+               setDashboard(res.data)
+            })
+            .catch(res => console.log("error in get request to customerdashboard",res))
 
-   },[location.pathname])
+            API.get("seller/")
+            .then(res => {
+               console.log("response data for get request to seller",res.data)
+               setSellers(res.data)
+            })
+            .catch(res => console.log("error in get request to seller",res))
+         }
+         else if (activeOutlet === "orders"){
+            API.get("customerorder/")
+            .then(res => {
+               console.log("response data for get request to customerorder",res.data)
+               setOrders(res.data)
+            })
+            .catch(res => console.log("error in get request to customerorder",res))
+         }
+         else if (activeOutlet === "payments"){
+            API.get("customerpayment/")
+            .then(res => {
+               console.log("response data for get request to customerpayment",res.data)
+               setPayments(res.data)
+            })
+            .catch(res => console.log("error in get request to customerpayment",res))
+         }
+         else if (activeOutlet === "sellers"){
+            API.get("seller/")
+            .then(res => {
+               console.log("response data for get request to seller",res.data)
+               setSellers(res.data)
+            })
+            .catch(res => console.log("error in get request to seller",res))
+         }
+      }
+   },[location.pathname, navigate, isLogin])
 
 
    const menus = [

@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
 export default function Root() {
-	const location = useLocation()
-	useEffect(() => {
-		console.log("runallttttt")
-	},[location.pathname])
+   const [isLogin, setIsLogin] = useState(localStorage.getItem("loggedin") === "true")
+
    return (
-      <Outlet/>
+      <Outlet context={[isLogin, setIsLogin]}/>
    )
 }

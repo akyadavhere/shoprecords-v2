@@ -6,7 +6,7 @@ export default axios.create({
    baseURL: "https://djangopsql.herokuapp.com/api/",
    headers: {
       common: {
-        ...token ? {"Authorization": `Bearer ${JSON.parse(token).access}`} : {}
+        ...token ? {"Authorization": `Bearer ${JSON.parse(token).access}f`} : {}
       },
       post: {
          "Content-Type":"application/json"
