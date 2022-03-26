@@ -105,7 +105,7 @@ export default function AddOrder() {
             }))
          }
 
-      API.post("purchase/", transaction)
+      API.post("seller/purchase", transaction)
       .then(res => console.log("response data for post request to purchase",res.data))
       .catch(res => console.log("error in post request to purchase",res))
 

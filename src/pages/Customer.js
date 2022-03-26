@@ -13,7 +13,7 @@ export default function Customer() {
    const [sellers, setSellers] = useState([])
    const navigate = useNavigate()
 
-
+   // API.defaults.baseURL = "http://localhost:8000/api/customer/"
 
    useEffect(() => {
       if (! isLogin) {
@@ -24,14 +24,15 @@ export default function Customer() {
          const activeOutlet = location.pathname.split("/")[location.pathname.split("/").length-1]
          
          if (activeOutlet === "dashboard"){
-            API.get("customerdashboard/")
+            
+            API.get("customer/dashboard")
             .then(res => {
                console.log("response data for get request to customerdashboard",res.data)
                setDashboard(res.data)
             })
             .catch(res => console.log("error in get request to customerdashboard",res))
 
-            API.get("seller/")
+            API.get("customer/seller")
             .then(res => {
                console.log("response data for get request to seller",res.data)
                setSellers(res.data)
@@ -39,7 +40,7 @@ export default function Customer() {
             .catch(res => console.log("error in get request to seller",res))
          }
          else if (activeOutlet === "orders"){
-            API.get("customerorder/")
+            API.get("customer/order")
             .then(res => {
                console.log("response data for get request to customerorder",res.data)
                setOrders(res.data)
@@ -47,7 +48,7 @@ export default function Customer() {
             .catch(res => console.log("error in get request to customerorder",res))
          }
          else if (activeOutlet === "payments"){
-            API.get("customerpayment/")
+            API.get("customer/payment")
             .then(res => {
                console.log("response data for get request to customerpayment",res.data)
                setPayments(res.data)
@@ -55,7 +56,7 @@ export default function Customer() {
             .catch(res => console.log("error in get request to customerpayment",res))
          }
          else if (activeOutlet === "sellers"){
-            API.get("seller/")
+            API.get("customer/seller")
             .then(res => {
                console.log("response data for get request to seller",res.data)
                setSellers(res.data)

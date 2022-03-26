@@ -11,7 +11,7 @@ export default function SellerOrders() {
 
 	const handeOrderDelete = e => {
 
-		API.delete(`order/${e.target.id}`)
+		API.delete(`seller/order/${e.target.id}`)
 		.then(res => console.log("response data for delete request to order",res.data))
 		.catch(res => console.log("error in delete request to order",res))
 

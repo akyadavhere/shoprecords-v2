@@ -22,7 +22,7 @@ export default function Login() {
             "token": JSON.parse(token).access
          }
 
-         API.post("verify/", data)
+         API.post("verify", data)
          .then(res => {
             if (res.status === 200) {
                setIsLogin(true)
@@ -47,12 +47,12 @@ export default function Login() {
          "password": e.target[1].value,
       }
 
-      API.post("token/", user)
+      API.post("token", user)
       .then(res => {
          console.log("response data for post request to token",res.data)
          if (res.status === 200) {
             window.localStorage.setItem("token",JSON.stringify(res.data))
-            API.defaults.headers.common["Authorization"] = `Bearer ${JSON.parse(window.localStorage.getItem("token")).access}`
+            API.defaults.headers.common["Authorization"] = `Bearer ${res.data.access}`
             setIsLogin(true)
             localStorage.setItem("loggedin",true)
             e.target[3].checked ? navigate("/seller") : navigate("/customer")

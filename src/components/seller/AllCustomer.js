@@ -12,7 +12,7 @@ export default function AllCustomer() {
       var customer = customers.filter(customers => customers.id === parseInt(e.target.id))[0]
       if (Math.round(customer.total - customer.paid) === 0) {
 
-         API.delete(`customer/${e.target.id}`)
+         API.delete(`seller/customer/${e.target.id}`)
          .then(res => console.log("response data for delete request to customer",res.data))
          .catch(res => console.log("error in delete request to customer",res))
 

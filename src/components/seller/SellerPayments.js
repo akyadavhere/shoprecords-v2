@@ -16,7 +16,7 @@ export default function SellerPayments() {
          customer: e.target[0].value,
          amount: e.target[1].value
       }
-      API.post("payment/", payment)
+      API.post("seller/payment", payment)
       .then(res => {
          setPayments([res.data,...payments])
       })
@@ -25,7 +25,7 @@ export default function SellerPayments() {
    }
 
    const handlePaymentDelete = e => {
-      API.delete(`payment/${e.target.id}`)
+      API.delete(`seller/payment/${e.target.id}`)
       .then(res => console.log("response data for delete request to payment",res.data))
       .catch(res => console.log("error in delete request to payment",res))
 

@@ -11,7 +11,7 @@ export default function CustomerOrders() {
 
 	const handleStatusChange = e => {
 
-		API.patch(`customerorder/${e.target.id}`)
+		API.patch(`customer/order/${e.target.id}`)
 		.then(res => {
 			console.log("response data for patch request to customerorder", res.data)
 			setOrders(orders.map(order => {

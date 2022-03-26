@@ -16,7 +16,7 @@ export default function Products() {
          price:  e.target[1].value,
       }
 
-      API.post("product/", product)
+      API.post("seller/product", product)
       .then(res => {
          console.log("response data for post request to product",res.data)
          setProducts([res.data, ...products])
@@ -27,7 +27,7 @@ export default function Products() {
 
    const handleProductDelete = e => {
 
-      API.delete(`product/${e.target.id}`)
+      API.delete(`seller/product${e.target.id}`)
       .then(res => console.log("response data for delete request to product",res))
       .catch(res => console.log("error in delete request to product",res))
 

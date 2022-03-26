@@ -23,14 +23,14 @@ export default function Seller() {
          const activeOutlet = location.pathname.split("/")[location.pathname.split("/").length-1]
             
          if (activeOutlet === "dashboard"){
-            API.get("dashboard/")
+            API.get("seller/dashboard")
             .then(res => {
                console.log("response data for get request to dashboard",res.data)
                setDashboard(res.data)
             })
             .catch(res => console.log("error in get request to dashboard",res))
 
-            API.get("customer/")
+            API.get("seller/customer")
             .then(res => {
                console.log("response data for get request to customer",res.data)
                setCustomers(res.data)
@@ -38,14 +38,14 @@ export default function Seller() {
             .catch(res => console.log("error in get request to customer",res))
          }
          else if (activeOutlet === "addorder"){
-            API.get("product/")
+            API.get("seller/product")
             .then(res => {
                console.log("response data for get request to product",res.data)
                setProducts(res.data)
             })
             .catch(res => console.log("error in get request to product",res))
 
-            API.get("customer/")
+            API.get("seller/customer")
             .then(res => {
                console.log("response data for get request to customer",res.data)
                setCustomers(res.data)
@@ -53,7 +53,7 @@ export default function Seller() {
             .catch(res => console.log("error in get request to customer",res))
          }
          else if (activeOutlet === "orders"){
-            API.get("order/")
+            API.get("seller/order")
             .then(res => {
                console.log("response data for get request to order",res.data)
                setOrders(res.data)
@@ -61,7 +61,7 @@ export default function Seller() {
             .catch(res => console.log("error in get request to order",res))
          }
          else if (activeOutlet === "products"){
-            API.get("product/")
+            API.get("seller/product")
             .then(res => {
                console.log("response data for get request to product",res.data)
                setProducts(res.data)
@@ -69,14 +69,14 @@ export default function Seller() {
             .catch(res => console.log("error in get request to product",res))
          }
          else if (activeOutlet === "payments"){
-            API.get("payment/")
+            API.get("seller/payment")
             .then(res => {
                console.log("response data for get request to payment",res.data)
                setPayments(res.data)
             })
             .catch(res => console.log("error in get request to payment",res))
             
-            API.get("customer/")
+            API.get("seller/customer")
             .then(res => {
                console.log("response data for get request to customer",res.data)
                setCustomers(res.data)
@@ -84,7 +84,7 @@ export default function Seller() {
             .catch(res => console.log("error in get request to customer",res))
          }
          else if (activeOutlet === "customers"){
-            API.get("customer/")
+            API.get("seller/customer")
             .then(res => {
                console.log("response data for get request to customer",res.data)
                setCustomers(res.data)
