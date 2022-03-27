@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { useLocation, useNavigate }   from "react-router-dom"
+import { useLocation, useNavigate, useOutletContext }   from "react-router-dom"
 
 export default function Sidebar(props) {
 
    const location = useLocation()
    const navigate = useNavigate()
    const [activeMenu, setActiveMenu] = useState()
+   const [,setIsLogin] = useOutletContext()
 
 
    const additionalMenus = [
@@ -17,7 +18,7 @@ export default function Sidebar(props) {
       [
          "Logout",
          "bi-arrow-left-circle-fill",
-         () => {window.localStorage.clear(); navigate("/login")}
+         () => {window.localStorage.clear(); setIsLogin(false); navigate("/login")}
       ]
    ]
 

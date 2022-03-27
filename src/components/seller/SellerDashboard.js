@@ -21,7 +21,7 @@ export default function SellerDashboard() {
    useEffect(() => {
       setAmoutOverviews([
          [
-            "Total Sells",
+            "Total Purchase",
             dashboard.total ? dashboard.total : 0,
          ],
          [

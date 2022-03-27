@@ -85,7 +85,7 @@ export default function Graph(props) {
 	}
 
 	return (
-		<div className="shadow p-4 rounded-3" style={{"width":"64.5%"}}>
+		<div className="shadow p-4 rounded-3" style={{"width":"65.77%"}}>
 			<h6 className="text-center mb-4"> {props.title} </h6>			
 			<Line id="graphCanvas" options={options} data={data}/>      
 		</div>

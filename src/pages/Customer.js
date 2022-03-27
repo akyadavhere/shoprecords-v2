@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom"
-import Panel      from "../components/Panel"
+import Panel from "../components/Panel"
 import API from "../api/base"
 
 export default function Customer() {
@@ -13,7 +13,6 @@ export default function Customer() {
    const [sellers, setSellers] = useState([])
    const navigate = useNavigate()
 
-   // API.defaults.baseURL = "http://localhost:8000/api/customer/"
 
    useEffect(() => {
       if (! isLogin) {
@@ -94,8 +93,10 @@ export default function Customer() {
    }
 
   return (
+      isLogin ? 
       <Panel menus={menus} url="/seller">
          <Outlet context={outletContext}/>
       </Panel>
+      : null
    )
 }

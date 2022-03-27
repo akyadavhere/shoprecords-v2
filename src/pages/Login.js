@@ -21,18 +21,22 @@ export default function Login() {
          var data = {
             "token": JSON.parse(token).access
          }
-
+         
          API.post("verify", data)
          .then(res => {
             if (res.status === 200) {
-               setIsLogin(true)
                localStorage.setItem("loggedin",true)
+               setIsLogin(true)
                setIsLoading(false)
-               navigate("/customer/dashboard")
+               navigate("/customer")
             }
-         }).catch(res => console.log("error in post request to verify",res))
-
+         }).catch(res => {
+            console.log("error in post request to verify",res)
+            setIsLogin(false)
+            setIsLoading(false)
+         })
       } else {
+         setIsLogin(false)
          setIsLoading(false)
       }
 
@@ -40,25 +44,27 @@ export default function Login() {
 
 
    const handleSubmit = e => {
+      setIsLoading(true)
 		e.preventDefault()
 
       var user = {
          "email": e.target[0].value,
          "password": e.target[1].value,
       }
-
       API.post("token", user)
       .then(res => {
          console.log("response data for post request to token",res.data)
          if (res.status === 200) {
             window.localStorage.setItem("token",JSON.stringify(res.data))
             API.defaults.headers.common["Authorization"] = `Bearer ${res.data.access}`
-            setIsLogin(true)
             localStorage.setItem("loggedin",true)
+            setIsLogin(true)
+            setIsLoading(false)
             e.target[3].checked ? navigate("/seller") : navigate("/customer")
          }
       }).catch(res => {
          console.log("error in post request to token",res)
+         setIsLoading(false)
          let toast = new ToastClass(toastRef.current)
          toast.show()
          loginForm.current.reset()

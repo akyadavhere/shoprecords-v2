@@ -10,7 +10,7 @@ export default function Dashboard(props) {
                props.amountOverviews.map(([label, value], index) => (
                   <div key={index} className={"card border-0 flex-grow-1 shadow rounded-3 text-center " + (index !== 0 ?"ms-5" : "")}>
                      <div className="card-body">
-                        <h5 className="card-title text-primary ms-2 mb-0" style={{"display":"inline-block"}}> Rs. {value} </h5>
+                        <h5 className="card-title text-primary ms-2 mb-0" style={{"display":"inline-block"}}> Rs. {value ? value : 0} </h5>
                         <p className="card-text"> {label} </p>
                      </div>
                   </div>

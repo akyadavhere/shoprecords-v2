@@ -3,7 +3,7 @@ import axios from "axios";
 const token = localStorage.getItem("token")
 
 export default axios.create({
-   baseURL: "https://djangopsql.herokuapp.com/api/",
+   baseURL: "http://localhost:8000/api/",
    headers: {
       common: {
         ...token ? {"Authorization": `Bearer ${JSON.parse(token).access}`} : {}
@@ -12,4 +12,4 @@ export default axios.create({
          "Content-Type":"application/json"
       }
    }
-});
+})

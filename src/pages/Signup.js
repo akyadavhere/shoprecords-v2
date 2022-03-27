@@ -23,7 +23,7 @@ export default function Signup() {
          "password": e.target[2].value,
       }
 
-      API.post("signup/", user)
+      API.post("signup", user)
       .then(res => {
          console.log("response data for post request to signup",res.data)
          if (res.status === 200) {
@@ -34,13 +34,13 @@ export default function Signup() {
             } else if (res.data.email) {
                setToastMessage("Email already exists")
             }
+            console.log(isLoading)
             setIsLoading(false)
             var toast = new ToastClass(toastRef.current)
             toast.show()
          }
       })
       .catch(res => console.log("error in post request to signup",res))
-      
       signupForm.current.reset()
 	}
 

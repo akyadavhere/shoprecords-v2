@@ -30,6 +30,7 @@ export default function Home() {
             
             <div className="text-center p-4">
                <h1 className="fw-bold" style={{"fontSize":"48px"}}> Now handle your shop records online </h1>
+               <p className="m-0 mt-3 ">A tool for sellers and customers to manage <br/> their transactions online</p>
                <button className="btn btn-lg btn-primary rounded-pill mt-4" onClick={() => navigate("/signup")} style={{"width":"30%", "minWidth":"180px"}}> Get Started </button>
             </div>
 

@@ -130,8 +130,10 @@ export default function Seller() {
    }
 
    return (
+      isLogin ?
       <Panel menus={menus} url="/customer">
          <Outlet context={outletContex}/>
       </Panel>
+      : null
    )
 }
