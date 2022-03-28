@@ -24,7 +24,7 @@ export default function AllCustomer() {
       setRows(customers.map(customer => (
          {
             id: customer.id,
-            data: [customer.name, customer.email, customer.total, customer.paid, Math.round(customer.total - customer.paid)],
+            data: [customer.name, customer.email, customer.total ? customer.total : 0, customer.paid ? customer.paid : 0, Math.round(customer.total - customer.paid)],
             buttons: [
                {
                   text: "Delete",

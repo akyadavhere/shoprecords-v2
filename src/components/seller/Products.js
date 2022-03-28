@@ -19,7 +19,9 @@ export default function Products() {
       API.post("seller/product", product)
       .then(res => {
          console.log("response data for post request to product",res.data)
-         setProducts([res.data, ...products])
+         if (res.data.id) {
+            setProducts([res.data, ...products])
+         }
       }).catch(res => console.log("error in post request to product",res))
       e.target.reset()
    }

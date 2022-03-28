@@ -11,7 +11,7 @@ export default function AllSeller() {
       setRows(sellers.map(seller => (
          {
             id: seller.id,
-            data: [seller.name, seller.email, seller.total, seller.paid, Math.round(seller.total - seller.paid)],
+            data: [seller.name, seller.email, seller.total ? seller.total : 0, seller.paid ? seller.paid : 0, Math.round(seller.total - seller.paid)],
             buttons: []
          }
       )))
