@@ -12,9 +12,9 @@ export default function SellerDashboard() {
 
 
    useEffect(() => {
-      setPendings(customers.splice(0,5).map(customer => (
+      setPendings(customers.map(customer => (
          [customer.name, parseInt(customer.total-customer.paid)]
-      )).sort((a, b) => (a[1] > b[1]) ? -1 : 1))
+      )).sort((a, b) => (a[1] > b[1]) ? -1 : 1).splice(0,5))
    },[customers])
    
    

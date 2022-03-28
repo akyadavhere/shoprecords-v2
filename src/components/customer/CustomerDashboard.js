@@ -11,9 +11,9 @@ export default function CustomerDashboard() {
    const [graphs, setGraphs] = useState([])
 
    useEffect(() => {
-      setPendings(sellers.splice(0,5).map(seller => (
+      setPendings(sellers.map(seller => (
          [seller.name, parseInt(seller.total-seller.paid)]
-      )).sort((a, b) => (a[1] > b[1]) ? -1 : 1))
+      )).sort((a, b) => (a[1] > b[1]) ? -1 : 1).splice(0,5))
    },[sellers])
    
    
